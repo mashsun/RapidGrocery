@@ -1,48 +1,55 @@
-<?php include 'header.html';?>
+<?php include 'include/header.html';?>
 
-			<!-- start banner Area -->
-			<section class="banner-area relative about-banner" id="home">
-				<div class="overlay overlay-bg"></div>
-				<div class="container">
-					<div class="row d-flex align-items-center justify-content-center">
-						<div class="about-content col-lg-12">
-							<h1 class="text-white">
-								Log In
-							</h1>
-							<p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html"> About Us</a></p>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End banner Area -->
+    <!-- start banner Area -->
+    <section class="banner-area relative about-banner" id="home">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Log In
+                    </h1>
+                    <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html"> About Us</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->
 
-            <!-- Start home-about Area -->
-			<section class="home-about-area section-gap">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-9">
+ <!-- Start contact-page Area -->
+            <section class="contact-page-area section-gap">
+                <div class="container">
+                    <div class="row">
 
-                                    <form action="#">
-                                        <div class="mt-10">
-                                            <input type="text" name="first_name" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required class="single-input">
-                                        </div>
-                                        <div class="mt-10">
-                                            <input type="text" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required class="single-input">
-                                        </div>
-                                        <div class="mt-10">
-                                            <input type="email" name="EMAIL" placeholder="Email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required class="single-input">
-                                        </div>
-                                        <br/><br/>
-                                        <div class="button-group-area">
-                                            <a href="#" class="genric-btn primary">Log In</a>
-                                            <a href="#" class="genric-btn success">Sign Up</a>
-                                        </div>
-                                    </form>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- End home-about Area -->
+                        <div class="col-lg-4 d-flex flex-column address-wrap">
+                        </div>
+                        <div class="col-lg-8">
+                            <form class="form-area " id="myForm" action="login_check.php" method="post" class="contact-form text-right">
+                                <div class="row">
+                                    <div class="col-lg-6 form-group">
+
+                                        <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
+
+                                        <input name="password" placeholder="Enter password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter password'"
+                                            class="common-input mb-20 form-control" required="" type="password">
+                                            <br>
+
+                                        <p align="center"><button class="genric-btn info">Sign In</button></p>
+                                        <p align="center">
+                                            <br>
+                                            <a href="#">Create Account</a><br>
+                                            <a href="#">Forgot your password?</a>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End contact-page Area -->
 
 
-<?php include 'footer.html';?>
+<?php include 'include/footer.html';?>

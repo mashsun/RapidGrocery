@@ -1,4 +1,4 @@
-<?php include 'header.html';?>
+<?php include 'include/header.html';?>
 
 			<!-- start banner Area -->
 			<section class="banner-area relative about-banner" id="home">
@@ -9,7 +9,7 @@
 							<h1 class="text-white">
 								About Us
 							</h1>
-							<p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.php"> About Us</a></p>
+							<p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about/about.php"> About Us</a></p>
 						</div>
 					</div>
 				</div>
@@ -20,17 +20,18 @@
 			<section class="home-about-area section-gap">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-9">
-							<h6 class="text-uppercase">Brand new app to blow your mind</h6>
+						<div class="col-lg-7">
+							<h6 class="text-uppercase">Whenever you want, fresh local produce and groceries</h6>
 							<h1>
-								We’ve baked every item
-								from the core of our heart to serve you
+								Your one-stop-shop<br>
+								for local produce and groceries
 							</h1>
 							<p>
-								<span>We are here to listen from you deliver exellence by any means</span>
+								<span>We are here to listen from you deliver excellence by any means</span>
 							</p>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod temp or incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+								Rapid grocery is located in Kitchener, Ontario. We specialize in bakery, fresh produce, local foods, meat, dairy, frozen products,
+								and seafood. We believe everything is better when fresh — that’s why we roll with the seasons.
 							</p>
 							<a class="primary-btn squire mx-auto mt-20" href="#">Get Started Now</a>
 						</div>
@@ -42,7 +43,7 @@
 
 
             <!-- Start review Area -->
-			<?php include 'review.html';?>
+			<?php include 'include/review.html';?>
 			<!-- End review Area -->
 
-<?php include 'footer.html';?>
+<?php include 'include/footer.html';?>

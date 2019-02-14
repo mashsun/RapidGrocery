@@ -1,4 +1,4 @@
-<?php include 'header.html';?>
+<?php include 'include/header.html';?>
 
 			<!-- start banner Area -->
             <section class="banner-area relative about-banner" id="home">
@@ -17,12 +17,11 @@
             <!-- End banner Area -->
 
 
-
             <!-- Start contact-page Area -->
             <section class="contact-page-area section-gap">
                 <div class="container">
                     <div class="row">
-                        <div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
+
                         <div class="col-lg-4 d-flex flex-column address-wrap">
                             <div class="single-contact-address d-flex flex-row">
                                 <div class="icon">
@@ -80,4 +79,4 @@
             <!-- End contact-page Area -->
 
 
-<?php include 'footer.html';?>
+<?php include 'include/footer.html';?>

@@ -1,4 +1,4 @@
-<?php include 'header.html';?>
+<?php include 'include/header.html';?>
 			<!-- start banner Area -->
 			<section class="banner-area relative about-banner" id="home">
 				<div class="overlay overlay-bg"></div>
@@ -121,4 +121,4 @@
 			</section>
 		    <!-- End menu-list Area -->
 
-<?php include 'footer.html';?>
+<?php include 'include/footer.html';?>
