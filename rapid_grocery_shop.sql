@@ -17,6 +17,7 @@ CREATE TABLE products (
   list_price         DECIMAL(10,2)  NOT NULL,
   discount_percent   DECIMAL(10,2)  NOT NULL      DEFAULT 0.00,
   date_added         DATETIME                     DEFAULT NULL,
+  product_img		 VARCHAR(10),
   CONSTRAINT products_fk_categories
     FOREIGN KEY (category_id)
     REFERENCES categories (category_id)
@@ -37,6 +38,7 @@ CREATE TABLE membership (
    membership_id         INT            PRIMARY KEY   AUTO_INCREMENT,
    customer_id        	 INT            NOT NULL,
    membership_point		 INT 						  DEFAULT 0,
+   point_consumed_id         INT             DEFAULT NULL,
    CONSTRAINT membership_fk_customers
     FOREIGN KEY (customer_id)
     REFERENCES customers (customer_id)
@@ -68,7 +70,9 @@ CREATE TABLE orders (
   card_type          VARCHAR(50)    NOT NULL,
   card_number        CHAR(16)       NOT NULL,
   card_expires       CHAR(7)        NOT NULL,
-  billing_address_id  INT           NOT NULL,
+  billing_address_id  INT           NOT NULL,  
+  last_updated         DATETIME             DEFAULT NULL,
+  
   CONSTRAINT orders_fk_customers
     FOREIGN KEY (customer_id)
     REFERENCES customers (customer_id)
@@ -89,6 +93,29 @@ CREATE TABLE order_items (
     REFERENCES products (product_id)
 );
 
+CREATE TABLE payment (
+  payment_id         INT            PRIMARY KEY   AUTO_INCREMENT,
+  order_id        INT            NOT NULL,
+  amount       DECIMAL(10,2)    NOT NULL,
+  tax_amount         DECIMAL(10,2)  NOT NULL,
+  payment_date          DATETIME                    DEFAULT NULL,
+  card_type          VARCHAR(50)    NOT NULL,
+  card_number        CHAR(16)       NOT NULL,
+  card_expires       CHAR(7)        NOT NULL,
+  cardholder_name       VARCHAR(255)   NOT NULL,
+  discount_percent   DECIMAL(10,2)  NOT NULL      DEFAULT 0.00,
+  CONSTRAINT payment_fk_orders
+    FOREIGN KEY (order_id)
+    REFERENCES orders (order_id)
+);
+
+ CREATE TABLE pointconsumed(
+	pointconsumed_id	INT		PRIMARY KEY		AUTO_INCREMENT,
+	order_id		INT,  
+    pointconsumed		INT
+                                   
+ );
+  
 CREATE TABLE administrators (
   admin_id           INT            PRIMARY KEY   AUTO_INCREMENT,
   email_address      VARCHAR(255)   NOT NULL,
