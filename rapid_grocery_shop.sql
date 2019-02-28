@@ -38,10 +38,13 @@ CREATE TABLE membership (
    membership_id         INT            PRIMARY KEY   AUTO_INCREMENT,
    customer_id        	 INT            NOT NULL,
    membership_point		 INT 						  DEFAULT 0,
-   point_consumed_id         INT             DEFAULT NULL,
+   pointconsumed_id         INT             DEFAULT NULL,
    CONSTRAINT membership_fk_customers
     FOREIGN KEY (customer_id)
-    REFERENCES customers (customer_id)
+    REFERENCES customers (customer_id),
+   CONSTRAINT membership_fk_pointconsumed
+	FOREIGN KEY (pointconsumed_id)
+	REFERENCES pointconsumed (pointconsumed_id)
 );
 
 CREATE TABLE addresses (
@@ -63,13 +66,9 @@ CREATE TABLE orders (
   order_id           INT            PRIMARY KEY  AUTO_INCREMENT,
   customer_id        INT            NOT NULL,
   order_date         DATETIME       NOT NULL,
-  ship_amount        DECIMAL(10,2)  NOT NULL,
-  tax_amount         DECIMAL(10,2)  NOT NULL,
+  ship_amount        DECIMAL(10,2)  NOT NULL,  
   ship_date          DATETIME                    DEFAULT NULL,
-  ship_address_id    INT            NOT NULL,
-  card_type          VARCHAR(50)    NOT NULL,
-  card_number        CHAR(16)       NOT NULL,
-  card_expires       CHAR(7)        NOT NULL,
+  ship_address_id    INT            NOT NULL,  
   billing_address_id  INT           NOT NULL,  
   last_updated         DATETIME             DEFAULT NULL,
   
