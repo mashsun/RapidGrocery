@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rapid Grocery Admin</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+<header>
+    <img src="../img/logo.png" alt="logo"  style="float:left"/>
+    <h3>Orders</h3>
+</header>
+
+<section>
+    <nav>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="order.html" class="active" >Orders</a></li>
+            <li><a href="product.html">Products</a></li>
+            <li><a href="customer.html">Customers</a></li>
+        </ul>
+    </nav>
+
+    <article>
+
+        <table id="customers">
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>Amount</th>
+                <th>Manage</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2019-02-03</td>
+                <td>Youngsun</td>
+                <td>123 Old Huron rd</td>
+                <td>$150</td>
+                <td align="center">
+                    <a href="order_detail.html"><i class="material-icons">list</i></a>
+                    <a href="order_edit.html"><i class="material-icons">brush</i></a>
+                    <a href="#"><i class="material-icons">clear</i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2019-02-05</td>
+                <td>Komal</td>
+                <td>156 King street</td>
+                <td>$210</td>
+                <td align="center">
+                    <a href="#"><i class="material-icons">list</i></a>
+                    <a href="#"><i class="material-icons">brush</i></a>
+                    <a href="#"><i class="material-icons">clear</i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2019-02-05</td>
+                <td>Jody</td>
+                <td>548 Queen court</td>
+                <td>$170</td>
+                <td align="center">
+                    <a href="#"><i class="material-icons">list</i></a>
+                    <a href="#"><i class="material-icons">brush</i></a>
+                    <a href="#"><i class="material-icons">clear</i></a>
+                </td>
+            </tr>
+        </table>
+
+    </article>
+</section>
+
+<footer>
+    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved.</p>
+</footer>
+
+</body>
+</html>
