@@ -94,9 +94,16 @@ footer {
     background-color: #4CAF50;
     color: white;
 }
-
+input[type=text], select {
+    padding: 10px 10px;
+    margin: 3px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 input[type=email], select {
-    width: 400;
+    width: 400px;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -105,7 +112,7 @@ input[type=email], select {
     box-sizing: border-box;
 }
 input[type=password], select {
-    width: 400;
+    width: 400px;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -113,9 +120,10 @@ input[type=password], select {
     border-radius: 4px;
     box-sizing: border-box;
 }
+
 input[type=submit] {
-    width: 420px;
-    background-color: #4CAF50;
+    width: 210px;
+    background-color: #af5600;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -124,8 +132,18 @@ input[type=submit] {
     cursor: pointer;
 }
 
+.button {
+    width: 210px;
+    background-color: #af5600;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #afaa00;
 }
 
 
