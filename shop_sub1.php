@@ -53,61 +53,40 @@
 
                 <div class="tab-pane fade show active" id="Bakery" role="tabpanel" aria-labelledby="Bakery-tab">
                     <div class="section-top-border">
-                            <h3>Bakery</h3>
+
                             <div class="row gallery-item">
-                                <div class="col-md-4">
-                                    <a href="shop_sub1.php" class="single-gallery-image"><div class="single-gallery-image" style="background: url(img/elements/bakery01.jpg);"></div></a>
+                                <div class="col-md-6">
+                                    <img src="img/elements/bakery01.jpg" width="500" height="400">
 
-                                    <div class="s-price col">
-                                        <h4>Donut</h4>
-                                        <span>$10</span>
-                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery02.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery02.jpg);"></div></a>
+                                <div class="col-md-6" align="center">
+                                    <br/>
+                                    <h1 class="typo-list">Donut</h1>
+                                    <br/>
+                                    <h4 class="typo-list">$10</h4>
+                                    <br/>
+                                    <input type="text" name="qty" placeholder="1" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Qty'" size="1">
 
-                                    <div class="s-price col">
-                                        <h4>Croissant</h4>
-                                        <span>$15</span>
+                                    <div class="button-group-area mt-40">
+                                    	<a href="#" class="genric-btn success circle arrow">Add to Cart<span class="lnr lnr-arrow-right"></span></a>
                                     </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery03.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery03.jpg);"></div></a>
 
-                                    <div class="s-price col">
-                                        <h4>Bread</h4>
-                                        <span>$10</span>
-                                    </div>
+                                    <br/>
+                                    <blockquote class="generic-blockquote" align="left" width="400">
+                                		The donut is popular in many countries and prepared in various forms as a sweet snack that can be homemade or purchased in bakeries.
+                                		<br/>
+                                		<p>Total Fat 15g	<br/>
+                                           Saturated Fat 7g	<br/>
+                                           Trans Fat<br/>
+                                           Cholesterol 0mg<br/>
+                                           Sodium 350mg	<br/>
+                                           Total Carb 38g</p>
+                                	 </blockquote>
+
                                 </div>
                             </div>
 
 
-                            <div class="row gallery-item">
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery04.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery04.jpg);"></div></a>
-
-                                    <div class="s-price col">
-                                        <h4>Chocolate Cake</h4>
-                                        <span>$20</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery05.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery05.jpg);"></div></a>
-
-                                    <div class="s-price col">
-                                        <h4>Egg tart</h4>
-                                        <span>$5</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery06.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery06.jpg);"></div></a>
-
-                                    <div class="s-price col">
-                                        <h4>Chocolate Chip Cookie</h4>
-                                        <span>$10</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                 </div>
 

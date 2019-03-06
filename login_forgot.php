@@ -26,20 +26,19 @@
                         <div class="col-lg-8">
                             <form class="form-area " id="myForm" action="login_check.php" method="post" class="contact-form text-right">
                                 <div class="row">
-                                    <div class="col-lg-6 form-group">
+                                    <div class="col-lg-6 form-group" align="center">
+                                    <h4>RESET YOUR PASSWORD</h4>  <br/>
+                                    <h5>We will send you an email to reset your password.</h5>  <br/>
 
                                         <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
 
-                                        <input name="password" placeholder="Enter password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter password'"
-                                            class="common-input mb-20 form-control" required="" type="password">
-                                            <br>
+                                       <br/>
 
-                                        <p align="center"><button class="genric-btn info">Sign In</button></p>
+                                        <p align="center"><button class="genric-btn info">Submit</button></p>
                                         <p align="center">
-                                            <br>
-                                            <a href="create_account.php">Create Account</a><br>
-                                            <a href="#">Forgot your password?</a>
+
+                                            <a href="login.php">Cancel</a>
                                         </p>
 
                                     </div>

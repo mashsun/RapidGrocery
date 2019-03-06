@@ -7,9 +7,9 @@
             <div class="row d-flex align-items-center justify-content-center">
                 <div class="about-content col-lg-12">
                     <h1 class="text-white">
-                        Log In
+                        Create Account
                     </h1>
-                    <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html">Login</a></p>
+                    <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="about.html">Create Account</a></p>
                 </div>
             </div>
         </div>
@@ -24,22 +24,27 @@
                         <div class="col-lg-4 d-flex flex-column address-wrap">
                         </div>
                         <div class="col-lg-8">
-                            <form class="form-area " id="myForm" action="login_check.php" method="post" class="contact-form text-right">
+                            <form class="form-area" id="signUp" action="sign_up.php" method="post" class="contact-form text-right">
                                 <div class="row">
                                     <div class="col-lg-6 form-group">
+                                      <input type="text" id ="first_name" name="first_name" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'"
+                                      required class="common-input mb-20 form-control">
 
-                                        <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
+                                      <input type="text" id="last_name" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'"
+                                      required class="common-input mb-20 form-control">
+
+
+                                        <input id="email_address" name="email_address" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
                                             onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
 
-                                        <input name="password" placeholder="Enter password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter password'"
+                                        <input id="password" name="password" placeholder="Enter password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter password'"
                                             class="common-input mb-20 form-control" required="" type="password">
                                             <br>
 
-                                        <p align="center"><button class="genric-btn info">Sign In</button></p>
+                                        <p align="center"><input id="submit" type="submit" name="submit" value="Create" class="genric-btn info">
                                         <p align="center">
                                             <br>
-                                            <a href="create_account.php">Create Account</a><br>
-                                            <a href="#">Forgot your password?</a>
+                                            <a href="index.php">Return to store</a><br>
                                         </p>
 
                                     </div>
