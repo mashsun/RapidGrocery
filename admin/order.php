@@ -1,7 +1,31 @@
+<?php
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['email'])){
+ }
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: ../admin_login.php');
+}
+
+   $sql_query = "select o.order_id AS 'order_id', o.order_date AS 'order_date',
+                 	   CONCAT(c.first_name, ', ', c.last_name) AS 'name',
+                 	   CONCAT(a.line1, a.line2, ', ' , a.city) AS 'address',
+                 		((oi.item_price - oi.discount_amount) * oi.quantity) AS 'item_total'
+                 from order_items oi
+                 	right JOIN orders o ON oi.order_id = o.order_id
+                 	right JOIN customers c ON o.customer_id = c.customer_id
+                 	left JOIN addresses a ON c.customer_id = a.customer_id
+                 GROUP BY o.order_id;";
+   $result = $con->query($sql_query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8 ">
     <title>Rapid Grocery Admin</title>
 
     <link rel="stylesheet" href="css/style.css">
@@ -29,126 +53,28 @@
                 <th>Amount</th>
                 <th>Manage</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>2019-02-03</td>
-                <td>Youngsun</td>
-                <td>123 Old Huron rd</td>
-                <td>$150</td>
-                <td>
-                    <a href="order_detail.php"><i class="material-icons">list</i></a>
-                    <a href="order_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>2019-02-05</td>
-                <td>Komal</td>
-                <td>156 King street</td>
-                <td>$210</td>
-                <td>
-                    <a href="#"><i class="material-icons">list</i></a>
-                    <a href="#"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>2019-02-05</td>
-                <td>Jody</td>
-                <td>548 Queen court</td>
-                <td>$170</td>
-                <td>
-                    <a href="#"><i class="material-icons">list</i></a>
-                    <a href="#"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>2019-02-06</td>
-                <td>Youngsun</td>
-                <td>123 Old Huron rd</td>
-                <td>$150</td>
-                <td>
-                    <a href="order_detail.html"><i class="material-icons">list</i></a>
-                    <a href="order_edit.html"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>2019-02-07</td>
-                <td>Komal</td>
-                <td>156 King street</td>
-                <td>$210</td>
-                <td>
-                    <a href="#"><i class="material-icons">list</i></a>
-                    <a href="#"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>2019-02-10</td>
-                <td>Jody</td>
-                <td>548 Queen court</td>
-                <td>$170</td>
-                <td>
-                    <a href="#"><i class="material-icons">list</i></a>
-                    <a href="#"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>2019-02-11</td>
-                <td>Youngsun</td>
-                <td>123 Old Huron rd</td>
-                <td>$150</td>
-                <td>
-                    <a href="order_detail.html"><i class="material-icons">list</i></a>
-                    <a href="order_edit.html"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>2019-02-11</td>
-                <td>Komal</td>
-                <td>156 King street</td>
-                <td>$210</td>
-                <td>
-                    <a href="#"><i class="material-icons">list</i></a>
-                    <a href="#"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>2019-02-13</td>
-                <td>Jody</td>
-                <td>548 Queen court</td>
-                <td>$170</td>
-                <td>
-                    <a href="#"><i class="material-icons">list</i></a>
-                    <a href="#"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>2019-02-14</td>
-                <td>Youngsun</td>
-                <td>123 Old Huron rd</td>
-                <td>$150</td>
-                <td>
-                    <a href="order_detail.html"><i class="material-icons">list</i></a>
-                    <a href="order_edit.html"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
+
+            <?php
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                //for($i=0; $i < mysqli_num_rows($result); $i++){
+                echo "<tr>";
+                echo "<td>" . $row["order_id"]. "</td>";
+                echo "<td>" . $row["order_date"]. "</td>";
+                echo "<td>" . $row["name"]. "</td>";
+                echo "<td>" . $row["address"]. "</td>";
+                echo "<td>" . $row["item_total"]. "</td>";
+                echo "<td><a href='order_detail.php?order_id=" .$row["order_id"]. "' class='material-icons' style='text-decoration:none'>list</i></a>";
+                echo "<a href='order_edit.php?order_id=" .$row["order_id"]. "' class='material-icons' style='text-decoration:none'>brush</i></a>";
+                echo "<a href='#?order_id=" .$row["order_id"]. "' class='material-icons' style='text-decoration:none'>clear</i></a></td>";
+                echo "</tr>";
+                }
+            } else {
+                echo "0 results";
+            }
+            ?>
+
         </table>
         <br/>
 
@@ -159,6 +85,7 @@
 </section>
 
 <?php
+$con->close();
 include "footer.php";
 ?>
 
