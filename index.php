@@ -1,4 +1,6 @@
-<?php include 'include/header.html';?>
+<?php
+    include 'include/header.php';
+?>
 
     <!-- start banner Area -->
     <section class="banner-area relative" id="home">

@@ -68,15 +68,15 @@
                                     $password =  $_POST['password'];
                                     if(!empty($_POST['email_address']))   //checking the 'email_address' name which is from Sign-Up.html, is it empty or have some text
                                     {
-                                        $query = "SELECT * FROM customers WHERE email_address = '$email' AND password = '$password'";
-
-                                        if(!$row = mysqli_fetch_array($con, $query))
+                                        $sql_query = "SELECT * FROM customers WHERE email_address = '$email' AND password = '$password'";
+                                        $result = $con->query($sql_query);
+                                        if($result->num_rows > 0)
                                         {
-                                            NewUser();
+                                            echo "SORRY...YOU ARE ALREADY REGISTERED USER...";
                                         }
                                         else
                                         {
-                                            echo "SORRY...YOU ARE ALREADY REGISTERED USER...";
+                                            NewUser();
                                         }
                                     }
                                 }
@@ -85,14 +85,15 @@
                                  {
                                     SignUp();
                                  }
+                                 $con->close();
                             ?>
 
                             </h5>  <br/>
 
-                            <p align="center"><button class="genric-btn info">View My profile</button></p>
+                            <p align="center"><a href="login.php">Go to Login page</a></p>
                             <p align="center">
                                 <br>
-                                <a href="index.php">Return to store</a><br>
+                                <a href="index.php">Go to store</a><br>
                             </p>
 
                         </div>

@@ -1,5 +1,34 @@
-<?php include 'include/header.html';?>
+<?php
+    include 'include/header.php';
+?>
+<?php
+   include "config.php";
 
+   if(isset($_POST['cus_submit'])){
+
+       $email = mysqli_real_escape_string($con,$_POST['email']);
+       $password = mysqli_real_escape_string($con,$_POST['password']);
+
+       if ($email != "" && $password != ""){
+
+           $sql_query = "select count(*) as cntUser from customers where email_address='".$email."' and password='".$password."'";
+           $result = mysqli_query($con,$sql_query);
+           $row = mysqli_fetch_array($result);
+
+           $count = $row['cntUser'];
+
+           if($count > 0){
+               $_SESSION["cus_email"] = "$email";
+               header('Location: index.php');
+           }else{
+               echo '<script type="text/javascript">';
+               echo 'alert("Invalid email or password")';
+               echo '</script>';
+
+           }
+       }
+   }
+?>
     <!-- start banner Area -->
     <section class="banner-area relative about-banner" id="home">
         <div class="overlay overlay-bg"></div>
@@ -24,7 +53,7 @@
                         <div class="col-lg-4 d-flex flex-column address-wrap">
                         </div>
                         <div class="col-lg-8">
-                            <form class="form-area " id="myForm" action="login_check.php" method="post" class="contact-form text-right">
+                            <form class="form-area " id="loginForm" action="" method="post" class="contact-form text-right">
                                 <div class="row">
                                     <div class="col-lg-6 form-group">
 
@@ -35,7 +64,7 @@
                                             class="common-input mb-20 form-control" required="" type="password">
                                             <br>
 
-                                        <p align="center"><button class="genric-btn info">Sign In</button></p>
+                                        <p align="center"><button class="genric-btn info"  name="cus_submit" id="cus_submit" onclick="document.forms["loginForm"].submit()">Sign In</button></p>
                                         <p align="center">
                                             <br>
                                             <a href="create_account.php">Create Account</a><br>
