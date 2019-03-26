@@ -123,7 +123,11 @@ if(isset($_POST['but_logout'])){
             </tr>
         </table>
 
-        <p align="center"><input type="submit" value="Edit order"> <input type="submit" value="Delete order"></p>
+        <p align="center"><input type="submit" value="Edit order" onclick="
+            <?php
+                echo "window.location='order_edit.php?order_id=" .$order_id."'";
+            ?> ;">
+        <input type="submit" value="Delete order"></p>
 
     </article>
 </section>
