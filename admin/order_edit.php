@@ -1,4 +1,5 @@
 <?php
+
 include "config.php";
 
 // Check user login or not
@@ -15,7 +16,7 @@ if(isset($_POST['but_logout'])){
                  	   CONCAT(c.first_name, ', ', c.last_name) AS 'name',
                  	   CONCAT(a.line1, a.line2, ', ' , a.city, ', ' , a.state, ', ' , a.zip_code) AS 'address',
                  		((oi.item_price - oi.discount_amount) * oi.quantity) AS 'item_total',
-                         oi.item_price AS item_price, oi.discount_amount, oi.quantity, oi.product_id,
+                         oi.item_id, oi.item_price, oi.discount_amount, oi.quantity, oi.product_id,
                          p.payment_date, p.tax_amount, pr.product_name
                  from payment p
                         right JOIN orders o ON p.order_id = o.order_id
@@ -27,7 +28,6 @@ if(isset($_POST['but_logout'])){
                  GROUP BY oi.item_id;" ;
    $result = $con->query($sql_query);
 
-   //$rows = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,6 +51,7 @@ if(isset($_POST['but_logout'])){
 
     <article>
         <h2>Edit order</h2>
+        <form action="order_update.php" method="get" name="form_update">
         <table id="customers">
             <tr>
                 <th width="250">Order ID</th>
@@ -73,27 +74,34 @@ if(isset($_POST['but_logout'])){
                            // output data of each row
                              while($rows = $result->fetch_assoc()) {
 
-                               $item_total = $rows["item_total"];
+                               $item_id = $rows["item_id"];
                                $order_date = $rows["order_date"];
+                               $item_total = $rows["item_price"] * $rows["quantity"];
                                $name = $rows["name"];
                                $address = $rows["address"];
                                $tax_amount = $rows["tax_amount"];
                                $payment_date = $rows["payment_date"];
+                               $discount_amount = $rows["discount_amount"];
+
                                     echo "<tr>";
                                     echo "<td><input type='text' id='product_name' disabled name='product_name' value='" . $rows["product_name"]. "'></td>";
                                     echo "<td><input type='text' id='item_price' name='item_price' size='3' value='" . $rows["item_price"]. "'></td>";
                                     echo "<td><input type='text' id='quantity' name='quantity' size='3' value='" . $rows["quantity"]. "'></td>";
-                                    echo "<td>" . $rows["item_price"] * $rows["quantity"]. "</td>";
+                                    echo "<td><input type='text' id='total' disabled name='total' value='" . $rows["item_price"] * $rows["quantity"]. "'></td>";
                                     echo "<tr>";
+
+                               $item_total += $rows["item_price"] * $rows["quantity"];
                                    }
                             } else {
                                echo "0 results";
                             }
                         ?>
+                        <input type="hidden" name="item_id" value="<?php echo $item_id; ?>">
                     </table>
 
                 </td>
             </tr>
+
             <tr>
                 <th>Order Date</th>
                 <td>2019-02-03</td>
@@ -104,15 +112,19 @@ if(isset($_POST['but_logout'])){
             </tr>
             <tr>
                 <th>Address</th>
-                <td><input type="text" placeholder="<?php echo $address ?>" size="50"></td>
+                <td><input type="text" disabled value="<?php echo $address ?>" size="50"></td>
             </tr>
             <tr>
-                <th>Amount</th>
-                <td><input type="text" placeholder="<?php echo $item_total ?>"></td>
+                <th>Discount Amount</th>
+                <td><input type="text" disabled value="<?php echo $discount_amount ?>"></td>
             </tr>
             <tr>
                 <th>Tax Amount</th>
-                <td><input type="text" placeholder="<?php echo $tax_amount ?>"></td>
+                <td><input type="text" disabled value="<?php echo $tax_amount ?>"></td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td><input type="text" disabled value="<?php echo $item_total ?>"></td>
             </tr>
             <tr>
                 <th>Payment Date</th>
@@ -120,12 +132,14 @@ if(isset($_POST['but_logout'])){
             </tr>
         </table>
 
-        <p align="center"><input type="submit" value="Save"> <input type="submit" value="Cancel"></p>
+        <p align="center"><input type="submit" value="Save" name="save"> <input type="submit" value="Cancel"></p>
+        </form>
 
     </article>
 </section>
 
 <?php
+
 $con->close();
 include "footer.php";
 ?>

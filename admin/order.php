@@ -1,4 +1,5 @@
 <?php
+
 include "config.php";
 
 // Check user login or not
@@ -19,6 +20,7 @@ if(isset($_POST['but_logout'])){
                  	right JOIN orders o ON oi.order_id = o.order_id
                  	right JOIN customers c ON o.customer_id = c.customer_id
                  	left JOIN addresses a ON c.customer_id = a.customer_id
+                 	where o.order_id
                  GROUP BY o.order_id;";
    $result = $con->query($sql_query);
 ?>
