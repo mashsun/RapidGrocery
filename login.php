@@ -46,39 +46,42 @@
     <!-- End banner Area -->
 
  <!-- Start contact-page Area -->
-            <section class="contact-page-area section-gap">
-                <div class="container">
+<section class="contact-page-area section-gap">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-4 d-flex flex-column address-wrap">
+            </div>
+            <div class="col-lg-8">
+                <form class="form-area " id="loginForm" action="" method="post" class="contact-form text-right">
                     <div class="row">
+                        <div class="col-lg-6 form-group">
 
-                        <div class="col-lg-4 d-flex flex-column address-wrap">
-                        </div>
-                        <div class="col-lg-8">
-                            <form class="form-area " id="loginForm" action="" method="post" class="contact-form text-right">
-                                <div class="row">
-                                    <div class="col-lg-6 form-group">
+                            <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
+                                onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
 
-                                        <input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
+                            <input name="password" placeholder="Enter password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter password'"
+                                class="common-input mb-20 form-control" required="" type="password">
+                                <br>
 
-                                        <input name="password" placeholder="Enter password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter password'"
-                                            class="common-input mb-20 form-control" required="" type="password">
-                                            <br>
+                            <p align="center"><button class="genric-btn info"  name="cus_submit" id="cus_submit" onclick="document.forms["loginForm"].submit()">Sign In</button></p>
+                            <p align="center">
+                                <br>
+                                <a href="create_account.php">Create Account</a><br>
+                                <a href="#">Forgot your password?</a>
+                            </p>
 
-                                        <p align="center"><button class="genric-btn info"  name="cus_submit" id="cus_submit" onclick="document.forms["loginForm"].submit()">Sign In</button></p>
-                                        <p align="center">
-                                            <br>
-                                            <a href="create_account.php">Create Account</a><br>
-                                            <a href="#">Forgot your password?</a>
-                                        </p>
-
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
-                </div>
-            </section>
-            <!-- End contact-page Area -->
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End contact-page Area -->
 
 
-<?php include 'include/footer.html';?>
+<?php
+$con->close();
+include 'include/footer.html';
+?>
