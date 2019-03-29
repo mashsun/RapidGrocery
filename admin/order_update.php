@@ -1,10 +1,13 @@
 <?php
 include "config.php";
 
-    if (isset($_GET['save'])) {
+    if (isset($_POST['save'])) {
+        /*
             $item_id = $_GET['item_id'];
             $item_price = $_GET['item_price'];
             $quantity = $_GET['quantity'];
+
+            /*
 
             $sql_query = "UPDATE order_items SET item_price='$item_price', quantity='$quantity' WHERE item_id='$item_id'";
 
@@ -19,6 +22,20 @@ include "config.php";
                    echo 'alert("Update failed!")';
                    echo '</script>';
                     }
+
+               */
+
+
+            echo '<pre>';
+            print_r($_POST);
+            echo '</pre>';
+           $count = count($_POST['item_id']);
+
+           echo $count;
+
+           for($i = 0; $i<$count; $i++){
+            echo $_POST['item_id'][$i].'<br/>';
+           }
     }
 
 $con->close();

@@ -51,7 +51,7 @@ if(isset($_POST['but_logout'])){
 
     <article>
         <h2>Edit order</h2>
-        <form action="order_update.php" method="get" name="form_update">
+        <form action="order_update.php" method="post" name="form_update">
         <table id="customers">
             <tr>
                 <th width="250">Order ID</th>
@@ -84,19 +84,19 @@ if(isset($_POST['but_logout'])){
                                $discount_amount = $rows["discount_amount"];
 
                                     echo "<tr>";
-                                    echo "<td><input type='text' id='product_name' disabled name='product_name' value='" . $rows["product_name"]. "'></td>";
-                                    echo "<td><input type='text' id='item_price' name='item_price' size='3' value='" . $rows["item_price"]. "'></td>";
-                                    echo "<td><input type='text' id='quantity' name='quantity' size='3' value='" . $rows["quantity"]. "'></td>";
-                                    echo "<td><input type='text' id='total' disabled name='total' value='" . $rows["item_price"] * $rows["quantity"]. "'></td>";
+                                    echo "<td><input type='text' id='product_name' disabled name='product_name[]' value='" . $rows["product_name"]. "'></td>";
+                                    echo "<td><input type='text' id='item_price' name='item_price[]' size='3' value='" . $rows["item_price"]. "'></td>";
+                                    echo "<td><input type='text' id='quantity' name='quantity[]' size='3' value='" . $rows["quantity"]. "'></td>";
+                                    echo "<td><input type='text' id='total' disabled name='total[]' value='" . $rows["item_price"] * $rows["quantity"]. "'></td>";
                                     echo "<tr>";
 
                                $item_total += $rows["item_price"] * $rows["quantity"];
+                                    echo "<input type='hidden' name='item_id[]' value='$item_id'>";
                                    }
                             } else {
                                echo "0 results";
                             }
                         ?>
-                        <input type="hidden" name="item_id" value="<?php echo $item_id; ?>">
                     </table>
 
                 </td>
@@ -139,9 +139,8 @@ if(isset($_POST['but_logout'])){
 </section>
 
 <?php
-
-$con->close();
-include "footer.php";
+    $con->close();
+    include "footer.php";
 ?>
 
 </body>
