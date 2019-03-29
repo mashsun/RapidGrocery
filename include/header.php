@@ -80,14 +80,19 @@ if(isset($_POST['cus_logout'])){
                     </li>
                     <li><a href="contact.php">Contact</a></li>
                     <li><a href="cart.php">Cart</a></li>
-                    <li><?php if(isset($_SESSION["cus_email"])){ ?>
-                       <form method="post" action=""><input type="submit" value="Logout" name="cus_logout"></form>
-                        <?php } else { ?>
-                        <a href="login.php">Login</a>
-                        <?php } ?>
-                    </li>
+                    <?php
+                        if(isset($_SESSION["cus_email"])){
+                            $email = $_SESSION['cus_email'];
+                            echo "<li><a href='mypage.php?email_address=" . $email . "'>My Page</a></li>";
+                    ?>
+                       <li><form method="post" action=""><input type="submit" value="Logout" name="cus_logout"></form> </li>
+
+                    <?php } else { ?>
+                    <li><a href="login.php">Login</a></li>
+                    <?php } ?>
+
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
     </div>
-</header><!-- #header -->
+</header>
