@@ -2,30 +2,31 @@
 include "config.php";
 
     if (isset($_POST['save'])) {
-        /*
-            $item_id = $_GET['item_id'];
-            $item_price = $_GET['item_price'];
-            $quantity = $_GET['quantity'];
+            $count = count($_POST['item_id']);
 
-            /*
+            for($i = 0; $i<$count; $i++){
 
-            $sql_query = "UPDATE order_items SET item_price='$item_price', quantity='$quantity' WHERE item_id='$item_id'";
+                $item_id = $_POST['item_id'][$i];
+                $item_price = $_POST['item_price'][$i];
+                $quantity = $_POST['quantity'][$i];
 
-            $result = $con->query($sql_query);
+                $sql_query = "UPDATE order_items SET item_price='$item_price', quantity='$quantity' WHERE item_id='$item_id'";
 
-            if($result){
-                    echo "<strong>Success!</strong> Item updated!" . $item_id;
-                    header('location: order.php');
-                    }
-                    else{
-                    echo '<script type="text/javascript">';
-                   echo 'alert("Update failed!")';
-                   echo '</script>';
-                    }
+                $result = $con->query($sql_query);
 
-               */
+                if($result){
+                        echo "<strong>Success!</strong> Item updated!" . $item_id;
+                        header('location: order.php');
+                }
+                else{
+                       echo '<script type="text/javascript">';
+                       echo 'alert("Update failed!")';
+                       echo '</script>';
+                }
+            }
 
 
+           /*
             echo '<pre>';
             print_r($_POST);
             echo '</pre>';
@@ -35,7 +36,11 @@ include "config.php";
 
            for($i = 0; $i<$count; $i++){
             echo $_POST['item_id'][$i].'<br/>';
-           }
+           }*/
+    }
+
+    if (isset($_POST['cancel'])) {
+        header('location: order.php');
     }
 
 $con->close();

@@ -74,14 +74,15 @@ if(isset($_POST['but_logout'])){
                            // output data of each row
                              while($rows = $result->fetch_assoc()) {
 
-                               $item_id = $rows["item_id"];
-                               $order_date = $rows["order_date"];
-                               $item_total = $rows["item_price"] * $rows["quantity"];
-                               $name = $rows["name"];
-                               $address = $rows["address"];
-                               $tax_amount = $rows["tax_amount"];
-                               $payment_date = $rows["payment_date"];
-                               $discount_amount = $rows["discount_amount"];
+                                   $item_id = $rows["item_id"];
+                                   $order_date = $rows["order_date"];
+                                   //$item_total = $rows["item_price"] * $rows["quantity"];
+                                   $item_total = $rows["item_total"];
+                                   $name = $rows["name"];
+                                   $address = $rows["address"];
+                                   $tax_amount = $rows["tax_amount"];
+                                   $payment_date = $rows["payment_date"];
+                                   $discount_amount = $rows["discount_amount"];
 
                                     echo "<tr>";
                                     echo "<td><input type='text' id='product_name' disabled name='product_name[]' value='" . $rows["product_name"]. "'></td>";
@@ -90,9 +91,9 @@ if(isset($_POST['but_logout'])){
                                     echo "<td><input type='text' id='total' disabled name='total[]' value='" . $rows["item_price"] * $rows["quantity"]. "'></td>";
                                     echo "<tr>";
 
-                               $item_total += $rows["item_price"] * $rows["quantity"];
+                                    //$item_total += $rows["item_price"] * $rows["quantity"];
                                     echo "<input type='hidden' name='item_id[]' value='$item_id'>";
-                                   }
+                                }
                             } else {
                                echo "0 results";
                             }
@@ -132,7 +133,7 @@ if(isset($_POST['but_logout'])){
             </tr>
         </table>
 
-        <p align="center"><input type="submit" value="Save" name="save"> <input type="submit" value="Cancel"></p>
+        <p align="center"><input type="submit" value="Save" name="save"> <input type="submit" value="Cancel" name="cancel"></p>
         </form>
 
     </article>
