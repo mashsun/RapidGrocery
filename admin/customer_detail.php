@@ -1,3 +1,21 @@
+<?php
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['email'])){
+ }
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: ../admin_login.php');
+}
+
+    $sql_query = "select customer_id, email_address, password, first_name, last_name,
+   shipping_address_id, billing_address_id, membership_id AS 'customers' from customers";
+                 
+   $result = $con->query($sql_query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,6 +79,36 @@
                 <th>Join Date</th>
                 <td>2019-02-01</td>
             </tr>
+			 <?php
+             if ($result->num_rows > 0) {
+                       // output data of each row
+                         while($rows = $result->fetch_assoc()) {
+
+                           $customer_id = $rows["customer_id"];
+                           $first_name = $rows["first_name"];
+                           $last_name = $rows["last_name"];
+                           $email = $rows["email_address"];
+                           $shipping_address_id = $rows["shipping_address_id"];
+						   $billing_address_id = $rows["billing_address_id"];
+                           $membership_id = $rows["membership_id"];
+						   $membership_point = $rows["membership_point"];
+						   $point_consumed = $rows["point_consumed"];
+                                echo "<tr>";
+								echo "<td>" . $rows["customer_id"]. "</td>";
+								echo "<td>" . $rows["first_name"]. "</td>";
+                                echo "<td>" . $rows["last_name"]. "</td>";
+                                echo "<td>" . $rows["email_address"]. "</td>";
+                                echo "<td>" . $rows["shipping_address_id"]. "</td>";
+                                echo "<td>" . $rows["billing_address_id"] "</td>";
+								echo "<td>" . $rows["membership_id"]. "</td>";
+								echo "<td>" . $rows["membership_point"]. "</td>";
+								echo "<td>" . $rows["point_consumed"]. "</td>";
+                                echo "<tr>";
+                               }
+                        } else {
+                           echo "0 results";
+                        }
+            ?>
         </table>
 
         <p align="center"><input type="submit" value="Edit Customer"> <input type="submit" value="Delete Customer"></p>
@@ -69,6 +117,7 @@
 </section>
 
 <?php
+$con->close();
 include "footer.php";
 ?>
 
