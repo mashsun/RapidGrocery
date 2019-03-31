@@ -2,7 +2,7 @@
 include 'include/header.php';
 include 'config.php';
 
-$email_address = $_SESSION["cus_email"];
+$email = $_SESSION["cus_email"];
 
 $sql_query = "select * from customers c JOIN addresses a ON c.customer_id = a.customer_id
                 where c.email_address='".$email."'";
@@ -59,7 +59,7 @@ $phone =  $row['phone'];
                           <input type="text" id="last_name" name="last_name"  value="<?php echo $lastName ?>" disabled
                             required class="common-input mb-20 form-control">
 
-                            <input id="email_address" name="email"  value="<?php echo $email_address ?>" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                            <input id="email" name="email"  value="<?php echo $email ?>" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
                                         disabled class="common-input mb-20 form-control" type="email">
 
                           <label for="password">Password</label>

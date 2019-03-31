@@ -50,7 +50,7 @@
                                 $con=mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
                                 $firstName = $_POST['first_name'];
                                 $lastName = $_POST['last_name'];
-                                $email = $_POST['email_address'];
+                                $email = $_POST['email'];
                                 $password =  $_POST['password'];
                                 $query = "INSERT INTO customers (customer_id,first_name,last_name,email_address,password) VALUES (default,'$firstName','$lastName','$email','$password')";
                                 $data = mysqli_query ($con,$query) or die("Could Not Perform the Query");
@@ -61,7 +61,7 @@
                                     echo "<form class='form-area' id='profileForm' action='profile.php' method='post' class='contact-form text-right'>";
                                     echo "<input type='hidden' name='first_name' id='firstName' value='" . $firstName. "'>";
                                     echo "<input type='hidden' name='last_name' id='last_name' value='" . $lastName. "'>";
-                                    echo "<input type='hidden' name='email_address' id='email_address' value='" . $email. "'>";
+                                    echo "<input type='hidden' name='email' id='email' value='" . $email. "'>";
                                     echo "<input type='hidden' name='password' id='password' value='" . $password. "'>";
 
                                     echo "<input type='submit' class='genric-btn info'  name='add_submit' id='add_submit' value='Add Information'>";
@@ -74,20 +74,21 @@
                                 $con = mysqli_connect(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
                                 $firstName = $_POST['first_name'];
                                 $lastName = $_POST['last_name'];
-                                $email = $_POST['email_address'];
+                                $email = $_POST['email'];
                                 $password =  $_POST['password'];
-                                if(!empty($_POST['email_address']))   //checking the 'email_address' name which is from Sign-Up.html, is it empty or have some text
+                                if(!empty($_POST['email']))   //checking the 'email_address' name which is from Sign-Up.html, is it empty or have some text
                                 {
                                     $sql_query = "SELECT * FROM customers WHERE email_address='$email' AND password='$password'";
                                     $result = $con->query($sql_query);
                                     if($result->num_rows > 0)
                                     {
+                                        //$_SESSION["cus_email"] = "$email";
                                         echo "SORRY...YOU ARE ALREADY REGISTERED USER...<br/><br/>";
 
                                          echo "<form class='form-area' id='profileForm' action='profile.php' method='post' class='contact-form text-right'>";
                                            echo "<input type='hidden' name='first_name' id='firstName' value='" . $firstName. "'>";
                                            echo "<input type='hidden' name='last_name' id='last_name' value='" . $lastName. "'>";
-                                           echo "<input type='hidden' name='email_address' id='email_address' value='" . $email. "'>";
+                                           echo "<input type='hidden' name='email' id='email' value='" . $email. "'>";
                                            echo "<input type='hidden' name='password' id='password' value='" . $password. "'>";
 
                                         echo "<input type='submit' class='genric-btn info'  name='add_submit' id='add_submit' value='Add Information'>";

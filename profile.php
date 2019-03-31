@@ -2,7 +2,8 @@
 include 'include/header.php';
 include 'config.php';
 
-$email_address = $_POST['email_address'];
+$email = $_POST["email"];
+$_SESSION["cus_email"] = "$email";
 
 $sql_query = "select customer_id, first_name, last_name, password  from customers where email_address='".$email."'";
 $result = mysqli_query($con,$sql_query);
@@ -50,7 +51,7 @@ $password =  $row['password'];
                           <input type="text" id="last_name" name="last_name"  value="<?php echo $lastName ?>" disabled
                             required class="common-input mb-20 form-control">
 
-                            <input id="email_address" name="email_address"  value="<?php echo $email_address ?>" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                            <input id="email" name="email"  value="<?php echo $email ?>" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
                                         disabled class="common-input mb-20 form-control" required="" type="email">
 
                           <label for="password">Password</label>

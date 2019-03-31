@@ -35,7 +35,7 @@ include 'include/header.php';
                           <input type="text" id="last_name" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'"
                           required class="common-input mb-20 form-control">
 
-                           <input id="email_address" name="email_address" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
+                           <input id="email" name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''"
                                 onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
 
                            <input id="password" name="password" placeholder="Enter password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter password'"
