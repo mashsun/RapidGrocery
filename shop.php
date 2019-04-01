@@ -1,4 +1,20 @@
-<?php include 'include/header.php';?>
+<?php include 'include/header.html';?>
+<?php 
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['email'])){
+ }
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: ../admin_login.php');
+}
+
+   $sql_query = "select product_name, list_price from products";
+   $result = $con->query($sql_query);
+   ?>
     <!-- start banner Area -->
     <section class="banner-area relative about-banner" id="home">
         <div class="overlay overlay-bg"></div>
@@ -121,4 +137,21 @@
     </section>
     <!-- End menu-list Area -->
 
-<?php include 'include/footer.html';?>
+<?php include 'include/footer.html';
+
+if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                //for($i=0; $i < mysqli_num_rows($result); $i++){
+                echo "<tr>";
+                echo "<td>" . $row["product_name"]. "</td>";
+				 echo "</tr>";
+				}
+				else
+				{
+					echo "0 results";
+					
+				}
+
+$con->close();
+?>
