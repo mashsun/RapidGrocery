@@ -1,5 +1,12 @@
 <?php include 'include/header.php';?>
+<?php
+// Check user login or not
+if(!isset($_SESSION['email'])){
+ }
 
+
+   $sql_query = "select email_address from customers";
+   ?>
     <!-- start banner Area -->
     <section class="banner-area relative about-banner" id="home">
         <div class="overlay overlay-bg"></div>
@@ -51,4 +58,7 @@
             <!-- End contact-page Area -->
 
 
-<?php include 'include/footer.html';?>
+<?php include 'include/footer.html';
+
+$con->close();
+?>

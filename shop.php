@@ -12,7 +12,7 @@ if(isset($_POST['but_logout'])){
     header('Location: ../admin_login.php');
 }
 
-   $sql_query = "select product_name, list_price from products";
+   $sql_query = "select product_name AS product_name, list_price from products";
    $result = $con->query($sql_query);
    ?>
     <!-- start banner Area -->
@@ -66,6 +66,21 @@ if(isset($_POST['but_logout'])){
             </div>
 
             <div id="pills-tabContent" class="tab-content absolute">
+     <?php         
+ if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                //for($i=0; $i < mysqli_num_rows($result); $i++){
+                echo "<tr>";
+                echo "<td>" . $row["product_name"]. "</td>";
+                echo "<td>" . $row["list_price"]. "</td>";
+                echo "</tr>";
+                }
+            } else {
+                echo "0 results";
+            }
+            ?>
+				
 
                 <div class="tab-pane fade show active" id="Bakery" role="tabpanel" aria-labelledby="Bakery-tab">
                     <div class="section-top-border">
@@ -76,7 +91,9 @@ if(isset($_POST['but_logout'])){
 
                                     <div class="s-price col">
                                         <h4>Donut</h4>
+								      <?php echo $product_name ?>
                                         <span>$10</span>
+										<?php echo $list_price ?>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -92,7 +109,9 @@ if(isset($_POST['but_logout'])){
 
                                     <div class="s-price col">
                                         <h4>Bread</h4>
+                                        <?php echo $product_name ?>
                                         <span>$10</span>
+										<?php echo $list_price ?>
                                     </div>
                                 </div>
                             </div>
@@ -104,6 +123,8 @@ if(isset($_POST['but_logout'])){
 
                                     <div class="s-price col">
                                         <h4>Chocolate Cake</h4>
+										<?php echo $product_name ?>
+										<?php echo $list_price ?>
                                         <span>$20</span>
                                     </div>
                                 </div>
@@ -112,6 +133,8 @@ if(isset($_POST['but_logout'])){
 
                                     <div class="s-price col">
                                         <h4>Egg tart</h4>
+										<?php echo $product_name ?>
+										<?php echo $list_price ?>
                                         <span>$5</span>
                                     </div>
                                 </div>
@@ -119,7 +142,10 @@ if(isset($_POST['but_logout'])){
                                     <a href="img/elements/bakery06.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery06.jpg);"></div></a>
 
                                     <div class="s-price col">
+									
                                         <h4>Chocolate Chip Cookie</h4>
+										<?php echo $product_name ?>
+										<?php echo $list_price ?>
                                         <span>$10</span>
                                     </div>
                                 </div>
@@ -138,20 +164,6 @@ if(isset($_POST['but_logout'])){
     <!-- End menu-list Area -->
 
 <?php include 'include/footer.html';
-
-if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                //for($i=0; $i < mysqli_num_rows($result); $i++){
-                echo "<tr>";
-                echo "<td>" . $row["product_name"]. "</td>";
-				 echo "</tr>";
-				}
-				else
-				{
-					echo "0 results";
-					
-				}
 
 $con->close();
 ?>

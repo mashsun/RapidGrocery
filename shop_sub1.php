@@ -1,4 +1,21 @@
 <?php include 'include/header.php';?>
+?php include 'include/header.html';?>
+<?php 
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['email'])){
+ }
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: ../admin_login.php');
+}
+
+   $sql_query = "select product_name, list_price, description from products";
+   $result = $con->query($sql_query);
+   ?>
     <!-- start banner Area -->
     <section class="banner-area relative about-banner" id="home">
         <div class="overlay overlay-bg"></div>
@@ -50,7 +67,23 @@
             </div>
 
             <div id="pills-tabContent" class="tab-content absolute">
-
+              
+			     <?php         
+ if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                //for($i=0; $i < mysqli_num_rows($result); $i++){
+                echo "<tr>";
+                echo "<td>" . $row["product_name"]. "</td>";
+                echo "<td>" . $row["list_price"]. "</td>";
+				echo "<td>" . $row["description"]. "</td>";
+                echo "</tr>";
+                }
+            } else {
+                echo "0 results";
+            }
+            ?>
+				
                 <div class="tab-pane fade show active" id="Bakery" role="tabpanel" aria-labelledby="Bakery-tab">
                     <div class="section-top-border">
 
@@ -61,9 +94,11 @@
                                 </div>
                                 <div class="col-md-6" align="center">
                                     <br/>
-                                    <h1 class="typo-list">Donut</h1>
+                                    <h1 class="typo-list" >Donut</h1>
+									<?php echo $product_name?>
                                     <br/>
                                     <h4 class="typo-list">$10</h4>
+									<?php echo $list_price?>
                                     <br/>
                                     <input type="text" name="qty" placeholder="1" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Qty'" size="1">
 
@@ -82,6 +117,7 @@
                                            Sodium 350mg	<br/>
                                            Total Carb 38g</p>
                                 	 </blockquote>
+									 <?php echo $description?>
 
                                 </div>
                             </div>
