@@ -96,3 +96,11 @@ CREATE TABLE administrators (
   first_name         VARCHAR(255)   NOT NULL,
   last_name          VARCHAR(255)   NOT NULL
 );
+
+INSERT INTO products (product_id, category_id, product_code, product_name, description, list_price, discount_percent, date_added, product_img) VALUES
+(default, 1, 'a', 'Bread', 'The Fender Stratocaster is the electric guitar design that changed the world. New features include a 
+tinted neck, parchment pickguard and control knobs, and a ''70s-style logo. Includes select alder body, 21-fret maple neck with 
+your choice of a rosewood or maple fretboard, 3 single-coil pickups, vintage-style tremolo, and die-cast tuning keys. This guitar 
+features a thicker bridge block for increased sustain and a more stable point of contact with the strings. At this low price, 
+why play anything but the real thing?\r\n\r\nFeatures:\r\n\r\n* New features:\r\n* Thicker bridge block\r\n* 3-ply parchment 
+pick guard\r\n* Tinted neck', '699.00', '30.00', '2014-10-30 09:32:40', 'bakery01');
