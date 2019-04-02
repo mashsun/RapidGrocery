@@ -105,11 +105,11 @@ if(isset($_POST['but_logout'])){
 
             <tr>
                 <th>Order Date</th>
-                <td>2019-02-03</td>
+                <td><input type="text" disabled value="<?php echo $order_date ?>" size="50"></td>
             </tr>
             <tr>
                 <th>Customer Name</th>
-                <td>Youngsun</td>
+                <td><input type="text" disabled value="<?php echo $name ?>" size="50"></td>
             </tr>
             <tr>
                 <th>Address</th>
@@ -126,10 +126,6 @@ if(isset($_POST['but_logout'])){
             <tr>
                 <th>Amount</th>
                 <td><input type="text" disabled value="<?php echo $item_total ?>"></td>
-            </tr>
-            <tr>
-                <th>Payment Date</th>
-                <td>2019-02-03</td>
             </tr>
         </table>
 

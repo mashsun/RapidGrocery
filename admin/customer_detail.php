@@ -47,16 +47,15 @@ if(isset($_POST['but_logout'])){
           if ($result->num_rows > 0) {
                  // output data of each row
                    while($rows = $result->fetch_assoc()) {
-
                          $customer_id = $rows["customer_id"];
                          $first_name = $rows["first_name"];
                          $last_name = $rows["last_name"];
                          $email = $rows["email_address"];
                          $address = $rows["address"];
-                        }
-                 } else {
-                    echo "0 results";
-              }
+                   }
+           } else {
+                echo "0 results";
+           }
           ?>
         <table id="customers">
             <tr>
@@ -83,14 +82,26 @@ if(isset($_POST['but_logout'])){
         </table>
 
         <p align="center"><input type="submit" value="Edit Customer"onclick="
-                            <?php
-                                echo "window.location='customer_edit.php?customer_id=" .$customer_id."'";
-                            ?> ;">
-                    <input type="submit" value="Delete Customer"></p>
+                <?php
+                    echo "window.location='customer_edit.php?customer_id=" .$customer_id."'";
+                ?> ;">
+        <input type="submit" value="Delete Customer" onclick="
+                  <?php
+                      echo "window.location='javascript:del_Customers(" .$customer_id.")'";
+                  ?> ;">
+        </p>
 
     </article>
 </section>
-
+<script>
+function del_Customers(id)
+{
+    if(confirm("Are you sure want to delete this ?"))
+    {
+        document.location.href = "customer_delete.php?customer_id=" + id;
+     }
+}
+</script>
 <?php
 $con->close();
 include "footer.php";

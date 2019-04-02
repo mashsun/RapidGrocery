@@ -5,7 +5,7 @@ include "config.php";
 
         $address_id =  $_POST['address_id'];
         $customer_id = $_POST['customer_id'];
-              $line1 =  $_POST['line1'];
+        $line1 =  $_POST['line1'];
         $line2 =  $_POST['line2'];
         $city =  $_POST['city'];
         $state =  $_POST['state'];

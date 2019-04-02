@@ -12,7 +12,7 @@ if(isset($_POST['but_logout'])){
     header('Location: ../admin_login.php');
 }
 
-   $sql_query = "select o.order_id AS 'order_id', o.order_date AS 'order_date',
+   $sql_query = "select COUNT(*) AS 'num', o.order_id AS 'order_id', o.order_date AS 'order_date',
                  	   CONCAT(c.first_name, ', ', c.last_name) AS 'name',
                  	   CONCAT(a.line1, a.line2, ', ' , a.city) AS 'address',
                  		((oi.item_price - oi.discount_amount) * oi.quantity) AS 'item_total'
@@ -22,7 +22,10 @@ if(isset($_POST['but_logout'])){
                  	left JOIN addresses a ON c.customer_id = a.customer_id
                  	where o.order_id
                  GROUP BY o.order_id;";
+
    $result = $con->query($sql_query);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +35,8 @@ if(isset($_POST['but_logout'])){
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
 </head>
 <body>
 <header>
@@ -69,14 +74,13 @@ if(isset($_POST['but_logout'])){
                 echo "<td>" . $row["item_total"]. "</td>";
                 echo "<td><a href='order_detail.php?order_id=" .$row["order_id"]. "' class='material-icons' style='text-decoration:none'>list</i></a>";
                 echo "<a href='order_edit.php?order_id=" .$row["order_id"]. "' class='material-icons' style='text-decoration:none'>brush</i></a>";
-                echo "<a href='#?order_id=" .$row["order_id"]. "' class='material-icons' style='text-decoration:none'>clear</i></a></td>";
+                echo "<a href='javascript:del_Orders(" .$row["order_id"]. ")' class='material-icons' style='text-decoration:none'>clear</i></a></td>";
                 echo "</tr>";
                 }
             } else {
                 echo "0 results";
             }
             ?>
-
         </table>
         <br/>
 
@@ -85,7 +89,15 @@ if(isset($_POST['but_logout'])){
         </div>
     </article>
 </section>
-
+<script>
+function del_Orders(id)
+{
+    if(confirm("Are you sure want to delete this ?"))
+    {
+        document.location.href = "order_delete.php?order_id=" + id;
+     }
+}
+</script>
 <?php
 $con->close();
 include "footer.php";

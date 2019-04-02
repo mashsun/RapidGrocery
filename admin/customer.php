@@ -54,7 +54,7 @@ if(isset($_POST['but_logout'])){
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                //for($i=0; $i < mysqli_num_rows($result); $i++){
+
                 echo "<tr>";
                 echo "<td>" . $row["customer_id"]. "</td>";
                 echo "<td>" . $row["first_name"]. "</td>";
@@ -63,7 +63,7 @@ if(isset($_POST['but_logout'])){
                 echo "<td>" . $row["address"]. "</td>";
                 echo "<td><a href='customer_detail.php?customer_id=" .$row["customer_id"]. "' class='material-icons' style='text-decoration:none'>list</i></a>";
                 echo "<a href='customer_edit.php?customer_id=" .$row["customer_id"]. "' class='material-icons' style='text-decoration:none'>brush</i></a>";
-                echo "<a href='#?customer_id=" .$row["customer_id"]. "' class='material-icons' style='text-decoration:none'>clear</i></a></td>";
+                echo "<a href='javascript:del_Customers(" .$row["customer_id"]. ")' class='material-icons' style='text-decoration:none'>clear</i></a></td>";
                 echo "</tr>";
                 }
             } else {
@@ -79,7 +79,15 @@ if(isset($_POST['but_logout'])){
         </div>
     </article>
 </section>
-
+<script>
+function del_Customers(id)
+{
+    if(confirm("Are you sure want to delete this ?"))
+    {
+        document.location.href = "customer_delete.php?customer_id=" + id;
+     }
+}
+</script>
 <?php
 $con->close();
 include "footer.php";

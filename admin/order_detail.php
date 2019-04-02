@@ -89,6 +89,13 @@ if(isset($_POST['but_logout'])){
                                 echo "<tr>";
                                }
                         } else {
+                           $item_total = "";
+                           $order_date = "";
+                           $name = "";
+                           $address = "";
+                           $tax_amount = "";
+                           $payment_date = "";
+
                            echo "0 results";
                         }
 
@@ -127,11 +134,23 @@ if(isset($_POST['but_logout'])){
             <?php
                 echo "window.location='order_edit.php?order_id=" .$order_id."'";
             ?> ;">
-        <input type="submit" value="Delete order"></p>
+        <input type="submit" value="Delete order" onclick="
+              <?php
+                  echo "window.location='javascript:del_Orders(" .$order_id.")'";
+              ?> ;">
+        </p>
 
     </article>
 </section>
-
+<script>
+function del_Orders(id)
+{
+    if(confirm("Are you sure want to delete this ?"))
+    {
+        document.location.href = "order_delete.php?order_id=" + id;
+     }
+}
+</script>
 <?php
 $con->close();
 include "footer.php";
