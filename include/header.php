@@ -66,16 +66,16 @@ if(isset($_POST['cus_logout'])){
                 <ul class="nav-menu">
                     <li class="menu-active"><a href="index.php">Home</a></li>
                     <li><a href="about.php">About</a></li>
-                    <li class="menu-has-children"><a href="shop.php">Shop</a>
+                    <li class="menu-has-children"><a href="shop.php?category_name=Bakery">Shop</a>
                         <ul>
-                            <li><a href="shop.php#Bakery">Bakery</a></li>
-                            <li><a href="shop.php#Dairy">Dairy</a></li>
-                            <li><a href="shop.php#Drinks">Drinks</a></li>
-                            <li><a href="shop.php#Fresh">Fresh Products</a></li>
-                            <li><a href="shop.php#Frozen">Frozen Products</a></li>
-                            <li><a href="shop.php#Meat">Meat</a></li>
-                            <li><a href="shop.php#Seafood">Seafood</a></li>
-                            <li><a href="shop.php#Snacks">Snacks</a></li>
+                            <li><a href="shop.php?category_name=Bakery">Bakery</a></li>
+                            <li><a href="shop.php?category_name=Dairy">Dairy</a></li>
+                            <li><a href="shop.php?category_name=Drinks">Drinks</a></li>
+                            <li><a href="shop.php?category_name=Fresh">Fresh Products</a></li>
+                            <li><a href="shop.php?category_name=Frozen">Frozen Products</a></li>
+                            <li><a href="shop.php?category_name=Meat">Meat</a></li>
+                            <li><a href="shop.php?category_name=Seafood">Seafood</a></li>
+                            <li><a href="shop.php?category_name=Snacks">Snacks</a></li>
                         </ul>
                     </li>
                     <li><a href="contact.php">Contact</a></li>
