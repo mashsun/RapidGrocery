@@ -1,124 +1,90 @@
-<?php include 'include/header.php';?>
-    <!-- start banner Area -->
-    <section class="banner-area relative about-banner" id="home">
-        <div class="overlay overlay-bg"></div>
-        <div class="container">
-            <div class="row d-flex align-items-center justify-content-center">
-                <div class="about-content col-lg-12">
-                    <h1 class="text-white">
-                        Shop List
-                    </h1>
-                    <p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="shop.php"> Shop</a></p>
-                </div>
+<?php
+include 'include/header.php';
+include "config.php";
+
+$category_name = $_GET["category_name"];
+
+$sql_query = "select * from products p join categories c on p.category_id = c.category_id
+                where category_name='$category_name';";
+$result = $con->query($sql_query);
+?>
+
+<!-- start banner Area -->
+<section class="banner-area relative about-banner" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    Shop List
+                </h1>
+                <p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="shop.php"> Shop</a></p>
             </div>
         </div>
-    </section>
-    <!-- End banner Area -->
+    </div>
+</section>
+<!-- End banner Area -->
 
-    <!-- Start menu-list Area -->
-    <section class="menu-list-area section-gap">
-        <div class="container">
-            <div class="row">
-                <div class="menu-cat mx-auto">
-                    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="Bakery-tab" data-toggle="pill" href="#Bakery" role="tab" aria-controls="Bakery" aria-selected="true">Bakery</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-Dairy-tab" data-toggle="pill" href="#pills-Dairy" role="tab" aria-controls="pills-Dairy" aria-selected="false">Dairy</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-Drinks-tab" data-toggle="pill" href="#pills-Drinks" role="tab" aria-controls="pills-Drinks" aria-selected="false">Drinks</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-Fresh-tab" data-toggle="pill" href="#pills-Fresh" role="tab" aria-controls="pills-Fresh" aria-selected="false">Fresh</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-Frozen-tab" data-toggle="pill" href="#pills-Frozen" role="tab" aria-controls="pills-Frozen" aria-selected="false">Frozen</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-Meat-tab" data-toggle="pill" href="#pills-Meat" role="tab" aria-controls="pills-Meat" aria-selected="false">Meat</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-Seafood-tab" data-toggle="pill" href="#pills-Seafood" role="tab" aria-controls="pills-Seafood" aria-selected="false">Seafood</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-Snacks-tab" data-toggle="pill" href="#pills-Snacks" role="tab" aria-controls="pills-Snacks" aria-selected="false">Snacks</a>
-                      </li>
-                    </ul>
-                </div>
-            </div>
+<!-- Start menu-list Area -->
+<section class="menu-list-area section-gap">
+    <div class="container">
+        <div align="center">
+            <a href="shop.php?category_name=Bakery" class="genric-btn primary-border e-large">Bakery</a> &nbsp;
+            <a href="shop.php?category_name=Dairy" class="genric-btn primary-border e-large">Dairy</a> &nbsp;
+            <a href="shop.php?category_name=Drinks" class="genric-btn primary-border e-large">Drinks</a> &nbsp;
+            <a href="shop.php?category_name=Fresh" class="genric-btn primary-border e-large">Fresh</a> &nbsp;
+            <a href="shop.php?category_name=Frozen" class="genric-btn primary-border e-large">Frozen</a> &nbsp;
+            <a href="shop.php?category_name=Meat" class="genric-btn primary-border e-large">Meat</a> &nbsp;
+            <a href="shop.php?category_name=Seafood" class="genric-btn primary-border e-large">Seafood</a> &nbsp;
+            <a href="shop.php?category_name=Snacks" class="genric-btn primary-border e-large">Snacks</a> &nbsp;
+        </div>
 
-            <div id="pills-tabContent" class="tab-content absolute">
+        <div id="pills-tabContent" class="tab-content absolute">
 
-                <div class="tab-pane fade show active" id="Bakery" role="tabpanel" aria-labelledby="Bakery-tab">
-                    <div class="section-top-border">
-                            <h3>Bakery</h3>
-                            <div class="row gallery-item">
-                                <div class="col-md-4">
-                                    <a href="shop_sub1.php" class="single-gallery-image"><div class="single-gallery-image" style="background: url(img/elements/bakery01.jpg);"></div></a>
+            <div class="tab-pane fade show active" id="Bakery" role="tabpanel" aria-labelledby="Bakery-tab">
+                <div class="section-top-border">
+                   <h3><?php echo $category_name ?></h3>
+                        <div class="row gallery-item">
 
-                                    <div class="s-price col">
-                                        <h4>Donut</h4>
-                                        <span>$10</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery02.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery02.jpg);"></div></a>
+                    <?php
+                        if ($result->num_rows > 0) {
+                            // output data of each row
+                           while($rows = $result->fetch_assoc()) {
 
-                                    <div class="s-price col">
-                                        <h4>Croissant</h4>
-                                        <span>$15</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery03.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery03.jpg);"></div></a>
+                           $product_id = $rows["product_id"];
+                           $category_id = $rows["category_id"];
+                           $product_name = $rows["product_name"];
+                           $list_price = $rows["list_price"];
+                           $product_img = $rows["product_img"];
+                           $category_name = $rows["category_name"];
+                    ?>
 
-                                    <div class="s-price col">
-                                        <h4>Bread</h4>
-                                        <span>$10</span>
-                                    </div>
+                            <div class="col-md-4">
+                                <a href="shop_sub.php?product_id=<?php echo $product_id ?>" class="single-gallery-image"><div class="single-gallery-image" style="background: url(img/elements/<?php echo $product_img ?>.jpg);"></div></a>
+
+                                <div class="s-price col">
+                                    <h4><?php echo $product_name ?></h4>
+                                    <span><?php echo $list_price ?></span>
                                 </div>
                             </div>
 
-
-                            <div class="row gallery-item">
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery04.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery04.jpg);"></div></a>
-
-                                    <div class="s-price col">
-                                        <h4>Chocolate Cake</h4>
-                                        <span>$20</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery05.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery05.jpg);"></div></a>
-
-                                    <div class="s-price col">
-                                        <h4>Egg tart</h4>
-                                        <span>$5</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="img/elements/bakery06.jpg" class="img-gal"><div class="single-gallery-image" style="background: url(img/elements/bakery06.jpg);"></div></a>
-
-                                    <div class="s-price col">
-                                        <h4>Chocolate Chip Cookie</h4>
-                                        <span>$10</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-
-                 <div class="tab-pane fade" id="pills-Dairy" role="tabpanel" aria-labelledby="pills-Dairy-tab">
-
+                     <?php
+                             }
+                         } else {
+                             echo "0 results";
+                         }
+                     ?>
+                    </div>
                  </div>
-
             </div>
+
         </div>
+    </div>
 
-    </section>
-    <!-- End menu-list Area -->
+</section>
+<!-- End menu-list Area -->
 
-<?php include 'include/footer.html';?>
+<?php
+$con->close();
+include 'include/footer.html';
+?>

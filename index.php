@@ -39,7 +39,7 @@
                         <div class="thumb">
                             <img class="img-fluid" src="img/c1.jpg" alt="">
                         </div>
-                        <a href="shop.php#Fresh"><h4>Fresh</h4></a>
+                        <a href="shop.php?category_name=Fresh"><h4>Fresh</h4></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -47,7 +47,7 @@
                         <div class="thumb">
                             <img class="img-fluid" src="img/c2.jpg" alt="">
                         </div>
-                        <a href="shop.php#Bakery"><h4>Bakery</h4></a>
+                        <a href="shop.php?category_name=Bakery"><h4>Bakery</h4></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -55,7 +55,7 @@
                         <div class="thumb">
                             <img class="img-fluid" src="img/c3.jpg" alt="">
                         </div>
-                        <a href="shop.php#Meat"><h4>Meat</h4></a>
+                        <a href="shop.php?category_name=Meat"><h4>Meat</h4></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -63,10 +63,10 @@
                         <div class="thumb">
                             <img class="img-fluid" src="img/c4.jpg" alt="">
                         </div>
-                        <a href="shop/shop.php#Dairy"><h4>Dairy</h4></a>
+                        <a href="shop.php?category_name=Dairy"><h4>Dairy</h4></a>
                     </div>
                 </div>
-                <a class="primary-btn mx-auto mt-80" href="shop.php">View Full Menu</a>
+                <a class="primary-btn mx-auto mt-80" href="shop.php?category_name=Bakery">View Full Menu</a>
             </div>
         </div>
     </section>
