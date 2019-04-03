@@ -72,8 +72,4 @@
     </section>
     <!-- End item-category Area -->
 
-    <!-- Start review Area -->
-    <?php include 'include/review.html';?>
-    <!-- End review Area -->
-
 <?php include 'include/footer.html';?>

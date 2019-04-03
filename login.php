@@ -11,20 +11,21 @@
 
        if ($email != "" && $password != ""){
 
-           $sql_query = "select count(*) as cntUser from customers where email_address='".$email."' and password='".$password."'";
+           $sql_query = "select count(*) as cntUser, customer_id from customers where email_address='".$email."' and password='".$password."'";
            $result = mysqli_query($con,$sql_query);
            $row = mysqli_fetch_array($result);
 
            $count = $row['cntUser'];
+           $customer_id = $row['customer_id'];
 
            if($count > 0){
                $_SESSION["cus_email"] = "$email";
-               header('Location: index.php');
+               $_SESSION["cus_id"] = "$customer_id";
+              echo "<script>window.history.go(-2);</script>";
            }else{
-               echo '<script type="text/javascript">';
-               echo 'alert("Invalid email or password")';
-               echo '</script>';
-
+               echo "<script type='text/javascript'>";
+               echo "alert('Invalid email or password')";
+               echo "</script>";
            }
        }
    }
