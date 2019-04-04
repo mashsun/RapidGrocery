@@ -13,6 +13,7 @@ $id = $row['customer_id'];
 $firstName = $row['first_name'];
 $lastName = $row['last_name'];
 $password =  $row['password'];
+$_SESSION["cus_id"] = "$id";
 ?>
 
 <!-- start banner Area -->

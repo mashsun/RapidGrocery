@@ -3,9 +3,10 @@ include 'include/header.php';
 include 'config.php';
 
 $email = $_SESSION["cus_email"];
+$customer_id = $_SESSION["cus_id"];
 
 $sql_query = "select * from customers c JOIN addresses a ON c.customer_id = a.customer_id
-                where c.email_address='".$email."'";
+                where a.customer_id='".$customer_id."'";
 $result = mysqli_query($con,$sql_query);
 $row = mysqli_fetch_array($result);
 

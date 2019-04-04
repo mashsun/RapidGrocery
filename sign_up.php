@@ -52,7 +52,8 @@
                                 $lastName = $_POST['last_name'];
                                 $email = $_POST['email'];
                                 $password =  $_POST['password'];
-                                $query = "INSERT INTO customers (customer_id,first_name,last_name,email_address,password) VALUES (default,'$firstName','$lastName','$email','$password')";
+                                $query = "INSERT INTO customers (customer_id, email_address, password, first_name,last_name)
+                                            VALUES (default,'$email','$password','$firstName','$lastName')";
                                 $data = mysqli_query ($con,$query) or die("Could Not Perform the Query");
                                 if($data)
                                 {

@@ -62,7 +62,13 @@ if ($result->num_rows > 0) {
                 <div class="tab-pane fade show active" id="Bakery" role="tabpanel" aria-labelledby="Bakery-tab">
                     <div class="section-top-border">
 
-                        <form action="cart.php" method="post" name="cart_update">
+                        <form action="cart.php" method="post" name="cart" id="cart">
+                            <input type="hidden" name="product_id" value="<?php echo $product_id ?>">
+                            <input type="hidden" name="category_id" value="<?php echo $category_id ?>">
+                            <input type="hidden" name="list_price" value="<?php echo $list_price ?>">
+                            <input type="hidden" name="product_img" value="<?php echo $product_img ?>">
+                            <input type="hidden" name="product_name" value="<?php echo $product_name ?>">
+
                             <div class="row gallery-item">
                                 <div class="col-md-6">
                                     <img src="img/elements/<?php echo $product_img ?>.jpg" width="500" height="400">
@@ -75,14 +81,9 @@ if ($result->num_rows > 0) {
                                     <h4 class="typo-list"><?php echo $list_price ?></h4>
                                     <br/>
                                     <input type="text" name="qty" value="1" size="1">
-                                    <input type='hidden' name='product_id' value='$product_id'>
-                                    <input type='hidden' name='category_id' value='$category_id'>
-                                    <input type='hidden' name='list_price' value='$list_price'>
-                                    <input type='hidden' name='product_img' value='$product_img'>
-                                    <input type='hidden' name='product_name' value='$product_name'>
 
                                     <div class="button-group-area mt-40">
-                                       <input type="submit" value="Add to Cart" name="cart" class="genric-btn success circle arrow">
+                                       <input type="submit" value="Add to Cart" name="cart" id="cart" class="genric-btn success circle arrow">
                                     </div>
 
                                     <br/>
