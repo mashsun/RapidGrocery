@@ -89,7 +89,7 @@ if(isset($_POST['but_logout'])){
             </tr>
         </table>
 
-        <p align="center"><input type="submit" value="Add"> <input type="submit" value="Cancel"></p>
+        <p align="center"><input type="submit" value="Add" name="add"> <input type="submit" value="Cancel" name="cancel"></p>
 
     </article>
 </section>
