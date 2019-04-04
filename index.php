@@ -15,7 +15,7 @@
                     <p class="text-white mx-auto">
                         Your one-stop-shop for local produce and groceries. We believe everything is better when fresh <br>— that’s why we roll with the seasons.
                     </p>
-                    <a href="shop.php" class="primary-btn squire text-uppercase mt-10">Check Our Menu</a>
+                    <a href="shop.php?category_name=Bakery" class="primary-btn squire text-uppercase mt-10">Check Our Menu</a>
                 </div>
             </div>
         </div>
