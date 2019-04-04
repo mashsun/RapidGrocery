@@ -192,16 +192,3 @@ INSERT INTO addresses (address_id, customer_id, line1, line2, city, state, zip_c
 (default, 2, '21 Rosewood Rd.', '', 'Waterloo', 'ON', '07677', '201-653-4472', 0);
 
 
- INSERT INTO orders (order_id, customer_id, order_date, ship_amount, ship_date, ship_address_id, billing_address_id, last_updated) VALUES
-(default, 1, '2019-03-28 09:40:28', '5.00', '2015-03-30 15:32:51', 1, 1, '2019-04-05 16:33:13'),
-(default, 2, '2019-03-29 11:23:20', '5.00', '2015-03-29 12:52:14', 2, 2, '2019-04-05 11:33:13');
-
-INSERT INTO order_items (item_id, order_id, product_id, item_price, discount_amount, quantity) VALUES
-(default, 1, 1, '200.00', '10.70', 1),
-(default, 1, 2, '300.00', '20.00', 2),
-(default, 2, 1, '300.00', '20.00', 3),
-(default, 2, 2, '150.99', '12.20', 1);
-
-INSERT INTO payment (payment_id,order_id,amount,tax_amount,payment_date,card_type,card_number,card_expires,cardholder_name,discount_percent) VALUES
-(default, 1, '839.30', '32.32','2015-03-29 09:40:28','Visa', '4111111111111111', '04/2020', 'Allan Sherwood', 10),
-(default, 2, '303.79', '12.11','2015-05-29 09:40:28','MasterCard', '5555555555554444', '08/2019', 'Barry Zimmer', 5);
