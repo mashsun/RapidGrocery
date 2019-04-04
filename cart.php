@@ -173,8 +173,9 @@ else {
                      {
                         $order_id = $rows['order_id'];
                      }
-                 }
+
                  echo "<a href='javascript:del_Orders(" .$order_id. ")' class='genric-btn danger' style='text-decoration:none'>Delete all items</a>";
+                 }
                  ?>
 
                 <input type="submit" value="Update Cart" name="save" class="genric-btn primary">

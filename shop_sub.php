@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
                 <h1 class="text-white">
                     Shop List
                 </h1>
-                <p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="shop.php"> Shop</a></p>
+                <p class="text-white link-nav"><a href="index.php">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="shop.php?category_name=Bakery"> Shop</a></p>
             </div>
         </div>
     </div>
