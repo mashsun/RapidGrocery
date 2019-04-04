@@ -1,3 +1,23 @@
+<?php
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['email'])){
+ }
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: ../admin_login.php');
+}
+
+    $sql_query = "select p.product_id, p.product_name, ca.category_name, p.list_price, p.description
+                       from products p JOIN categories ca ON p.category_id = ca.category_id
+                       group by p.product_id;";
+
+   $result = $con->query($sql_query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,126 +66,29 @@
                 <th>Discription</th>
                 <th>Manage</th>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>Donut</td>
-                <td>Bakery</td>
-                <td>$10</td>
-                <td>prepared in various forms</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Water</td>
-                <td>Drink</td>
-                <td>$3</td>
-                <td>fresh</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Milk</td>
-                <td>Dairy</td>
-                <td>$5</td>
-                <td>provide everyday</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Croissant</td>
-                <td>Bakery</td>
-                <td>$15</td>
-                <td>delicious</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Chocolate Cake</td>
-                <td>Bakery</td>
-                <td>$10</td>
-                <td>popular in many countries</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Beef</td>
-                <td>Meat</td>
-                <td>$30</td>
-                <td>fresh</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Shrimp</td>
-                <td>Seafood</td>
-                <td>$10</td>
-                <td>fresh</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Egg tart</td>
-                <td>Bakery</td>
-                <td>$5</td>
-                <td>prepared in various forms</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Donut</td>
-                <td>Bakery</td>
-                <td>$10</td>
-                <td>popular in many countries</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Pork</td>
-                <td>Meat</td>
-                <td>$10</td>
-                <td>fresh</td>
-                <td>
-                    <a href="product_detail.php"><i class="material-icons">list</i></a>
-                    <a href="product_edit.php"><i class="material-icons">brush</i></a>
-                    <a href="#"><i class="material-icons">clear</i></a>
-                </td>
-            </tr>
+
+            <?php
+            if ($result->num_rows > 0) {
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+
+                   echo "<tr>";
+                   echo "<td>" . $row["product_id"]. "</td>";
+                   echo "<td>" . $row["product_name"]. "</td>";
+                   echo "<td>" . $row["category_name"]. "</td>";
+                   echo "<td>" . $row["list_price"]. "</td>";
+                   echo "<td>" . $row["description"]. "</td>";
+                   echo "<td><a href='product_detail.php?product_id=" .$row["product_id"]. "' class='material-icons' style='text-decoration:none'>list</i></a>";
+                   echo "<a href='product_edit.php?product_id=" .$row["product_id"]. "' class='material-icons' style='text-decoration:none'>brush</i></a>";
+                   echo "<a href='javascript:del_Products(" .$row["product_id"]. ")' class='material-icons' style='text-decoration:none'>clear</i></a></td>";
+                   echo "</tr>";
+                   }
+                  } else {
+                      echo "0 results";
+                  }
+
+
+            ?>
         </table>
         <br/>
 
@@ -174,7 +97,15 @@
         </div>
     </article>
 </section>
-
+<script>
+function del_Products(id)
+{
+    if(confirm("Are you sure want to delete this ?"))
+    {
+        document.location.href = "product_delete.php?product_id=" + id;
+     }
+}
+</script>
 <?php
 include "footer.php";
 ?>
