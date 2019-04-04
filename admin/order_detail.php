@@ -17,7 +17,7 @@ if(isset($_POST['but_logout'])){
                  	   CONCAT(a.line1, a.line2, ', ' , a.city, ', ' , a.state, ', ' , a.zip_code) AS 'address',
                  		((oi.item_price - oi.discount_amount) * oi.quantity) AS 'item_total',
                          oi.item_price AS item_price, oi.discount_amount, oi.quantity, oi.product_id,
-                         p.payment_date, p.tax_amount, pr.product_name
+                         p.payment_date, p.tax_amount, pr.product_name, pr.list_price
                  from payment p
                         right JOIN orders o ON p.order_id = o.order_id
                         right join order_items oi ON o.order_id = oi.order_id
@@ -27,8 +27,6 @@ if(isset($_POST['but_logout'])){
                  WHERE o.order_id=$order_id
                  GROUP BY oi.item_id;" ;
    $result = $con->query($sql_query);
-
-   //$rows = $result->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +81,7 @@ if(isset($_POST['but_logout'])){
                            $payment_date = $rows["payment_date"];
                                 echo "<tr>";
                                 echo "<td>" . $rows["product_name"]. "</td>";
-                                echo "<td>" . $rows["item_price"]. "</td>";
+                                echo "<td>" . $rows["list_price"]. "</td>";
                                 echo "<td>" . $rows["quantity"]. "</td>";
                                 echo "<td>" . $rows["item_price"] * $rows["quantity"]. "</td>";
                                 echo "<tr>";
@@ -98,7 +96,14 @@ if(isset($_POST['but_logout'])){
 
                            echo "0 results";
                         }
-
+                            $sql_query2 ="SELECT sum(list_price*quantity) as total FROM payment p
+                                                right JOIN orders o ON p.order_id = o.order_id
+                                                right join order_items oi ON o.order_id = oi.order_id
+                                                right join products pr ON oi.product_id = pr.product_id
+                                                 WHERE o.order_id=$order_id";
+                            $result2 = $con->query($sql_query2);
+                            $row = mysqli_fetch_array($result2);
+                            $subtotal = $row['total'];
                         ?>
                     </table>
 
@@ -117,12 +122,16 @@ if(isset($_POST['but_logout'])){
                 <td><?php echo $address ?></td>
             </tr>
             <tr>
-                <th>Amount</th>
-                <td><?php echo $item_total ?></td>
+                <th>Item total</th>
+                <td><?php echo $subtotal ?></td>
             </tr>
             <tr>
                 <th>Tax Amount</th>
-                <td><?php echo $tax_amount ?></td>
+                <td><?php echo $subtotal * 0.13 ?></td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td><?php echo $subtotal + ($subtotal * 0.13) ?></td>
             </tr>
             <tr>
                 <th>Payment Date</th>

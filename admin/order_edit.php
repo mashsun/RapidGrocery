@@ -17,7 +17,7 @@ if(isset($_POST['but_logout'])){
                  	   CONCAT(a.line1, a.line2, ', ' , a.city, ', ' , a.state, ', ' , a.zip_code) AS 'address',
                  		((oi.item_price - oi.discount_amount) * oi.quantity) AS 'item_total',
                          oi.item_id, oi.item_price, oi.discount_amount, oi.quantity, oi.product_id,
-                         p.payment_date, p.tax_amount, pr.product_name
+                         p.payment_date, p.tax_amount, pr.product_name, pr.list_price
                  from payment p
                         right JOIN orders o ON p.order_id = o.order_id
                         right join order_items oi ON o.order_id = oi.order_id
@@ -86,7 +86,7 @@ if(isset($_POST['but_logout'])){
 
                                     echo "<tr>";
                                     echo "<td><input type='text' id='product_name' disabled name='product_name[]' value='" . $rows["product_name"]. "'></td>";
-                                    echo "<td><input type='text' id='item_price' name='item_price[]' size='3' value='" . $rows["item_price"]. "'></td>";
+                                    echo "<td><input type='text' id='item_price' name='item_price[]' size='3' value='" . $rows["list_price"]. "'></td>";
                                     echo "<td><input type='text' id='quantity' name='quantity[]' size='3' value='" . $rows["quantity"]. "'></td>";
                                     echo "<td><input type='text' id='total' disabled name='total[]' value='" . $rows["item_price"] * $rows["quantity"]. "'></td>";
                                     echo "<tr>";
@@ -97,6 +97,15 @@ if(isset($_POST['but_logout'])){
                             } else {
                                echo "0 results";
                             }
+
+                            $sql_query2 ="SELECT sum(list_price*quantity) as total FROM payment p
+                                                right JOIN orders o ON p.order_id = o.order_id
+                                                right join order_items oi ON o.order_id = oi.order_id
+                                                right join products pr ON oi.product_id = pr.product_id
+                                                 WHERE o.order_id=$order_id";
+                            $result2 = $con->query($sql_query2);
+                            $row = mysqli_fetch_array($result2);
+                            $subtotal = $row['total'];
                         ?>
                     </table>
 
@@ -120,12 +129,16 @@ if(isset($_POST['but_logout'])){
                 <td><input type="text" disabled value="<?php echo $discount_amount ?>"></td>
             </tr>
             <tr>
+                <th>Item total</th>
+                <td><input type="text" disabled value="<?php echo $subtotal ?>"></td>
+            </tr>
+            <tr>
                 <th>Tax Amount</th>
-                <td><input type="text" disabled value="<?php echo $tax_amount ?>"></td>
+                <td><input type="text" disabled value="<?php echo $subtotal * 0.13 ?>"></td>
             </tr>
             <tr>
                 <th>Amount</th>
-                <td><input type="text" disabled value="<?php echo $item_total ?>"></td>
+                <td><input type="text" disabled value="<?php echo $subtotal + ($subtotal * 0.13) ?>"></td>
             </tr>
         </table>
 

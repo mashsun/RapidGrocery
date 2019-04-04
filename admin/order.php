@@ -65,13 +65,22 @@ if(isset($_POST['but_logout'])){
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                //for($i=0; $i < mysqli_num_rows($result); $i++){
+
+                $order_id=$row["order_id"];
+                $sql_query2 ="SELECT sum(list_price*quantity) as total FROM payment p
+                                           right JOIN orders o ON p.order_id = o.order_id
+                                           right join order_items oi ON o.order_id = oi.order_id
+                                           right join products pr ON oi.product_id = pr.product_id
+                                            WHERE o.order_id=$order_id";
+                       $result2 = $con->query($sql_query2);
+                       $rows = mysqli_fetch_array($result2);
+                       $subtotal = $rows['total'];
                 echo "<tr>";
                 echo "<td>" . $row["order_id"]. "</td>";
                 echo "<td>" . $row["order_date"]. "</td>";
                 echo "<td>" . $row["name"]. "</td>";
                 echo "<td>" . $row["address"]. "</td>";
-                echo "<td>" . $row["item_total"]. "</td>";
+                echo "<td>" . $subtotal. "</td>";
                 echo "<td><a href='order_detail.php?order_id=" .$row["order_id"]. "' class='material-icons' style='text-decoration:none'>list</i></a>";
                 echo "<a href='order_edit.php?order_id=" .$row["order_id"]. "' class='material-icons' style='text-decoration:none'>brush</i></a>";
                 echo "<a href='javascript:del_Orders(" .$row["order_id"]. ")' class='material-icons' style='text-decoration:none'>clear</i></a></td>";
