@@ -1,3 +1,25 @@
+<?php
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['email'])){
+ }
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: ../admin_login.php');
+}
+    $product_id = $_GET["product_id"];
+    $sql_query = "select p.product_id, p.product_name, ca.category_name, p.list_price, p.description,
+                        p.discount_percent, p.product_img
+                       from products p JOIN categories ca ON p.category_id = ca.category_id
+                       where p.product_id=$product_id
+                       group by p.product_id;";
+
+   $result = $con->query($sql_query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
