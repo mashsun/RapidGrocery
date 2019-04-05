@@ -30,7 +30,7 @@ if(isset($_POST['but_logout'])){
         <ul>
             <li><a class="active" href="index.php">Dashboard</a></li>
             <li><a href="order.php">Orders</a></li>
-            <li><a href="product.php">Products</a></li>
+            <li><a href="product.php?category_name=Bakery">Products</a></li>
             <li><a href="customer.php">Customers</a></li>
         </ul>
     </nav>

@@ -73,10 +73,7 @@ if(isset($_POST['but_logout'])){
         </table>
 		
         <br/>
-    
-        <div align="center">
-            <a href="#">1</a> | <a href="#">2</a> | <a href="#">3</a>
-        </div>
+
     </article>
 </section>
 <script>

@@ -113,6 +113,7 @@ function del_Products(id)
 }
 </script>
 <?php
+$con->close();
 include "footer.php";
 ?>
 

@@ -11,8 +11,11 @@ if(isset($_POST['but_logout'])){
     header('Location: ../admin_login.php');
 }
 
+$category_name = $_GET["category_name"];
+
     $sql_query = "select p.product_id, p.product_name, ca.category_name, p.list_price, p.description
                        from products p JOIN categories ca ON p.category_id = ca.category_id
+                       where category_name='$category_name'
                        group by p.product_id;";
 
    $result = $con->query($sql_query);
@@ -23,7 +26,6 @@ if(isset($_POST['but_logout'])){
 <head>
     <meta charset="UTF-8">
     <title>Rapid Grocery Admin</title>
-
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -41,16 +43,16 @@ if(isset($_POST['but_logout'])){
     <article>
         <h2>List of Product</h2>
         <div>
-            <select name="category">
+            <select name="category_id" onchange="location = this.value;">
                 <option value="">======== Select Category =========</option>
-                <option value="Bakery">Bakery</option>
-                <option value="Dairy">Dairy</option>
-                <option value="Drink">Drink</option>
-                <option value="Fresh">Fresh</option>
-                <option value="Frozen">Frozen</option>
-                <option value="Meat">Meat</option>
-                <option value="Seafood">Seafood</option>
-                <option value="Snacks">Snacks</option>
+                <option value="product.php?category_name=Bakery">Bakery</option>
+                <option value="product.php?category_name=Dairy">Dairy</option>
+                <option value="product.php?category_name=Drinks">Drink</option>
+                <option value="product.php?category_name=Fresh">Fresh</option>
+                <option value="product.php?category_name=Frozen">Frozen</option>
+                <option value="product.php?category_name=Meat">Meat</option>
+                <option value="product.php?category_name=Seafood">Seafood</option>
+                <option value="product.php?category_name=Snacks">Snacks</option>
             </select>
 
             <button type="button" class="button"  onclick="window.location.href='product_add.php'">Add Product</button>
@@ -86,15 +88,10 @@ if(isset($_POST['but_logout'])){
                   } else {
                       echo "0 results";
                   }
-
-
             ?>
         </table>
         <br/>
 
-        <div align="center">
-            <a href="#">1</a> | <a href="#">2</a> | <a href="#">3</a>
-        </div>
     </article>
 </section>
 <script>
@@ -107,6 +104,7 @@ function del_Products(id)
 }
 </script>
 <?php
+$con->close();
 include "footer.php";
 ?>
 

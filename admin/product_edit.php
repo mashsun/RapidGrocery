@@ -118,6 +118,7 @@ if(isset($_POST['but_logout'])){
 </section>
 
 <?php
+$con->close();
 include "footer.php";
 ?>
 

@@ -21,7 +21,7 @@ include "config.php";
 
                 if($result){
                         echo "<strong>Success!</strong> Product updated!" ;
-                        header('location: product.php');
+                        header('location: product.php?category_name=Bakery');
                 }
                 else{
                        echo '<script type="text/javascript">';
@@ -32,7 +32,7 @@ include "config.php";
     }
 
     if (isset($_POST['cancel'])) {
-        header('location: product.php');
+        header('location: product.php?category_name=Bakery');
     }
 
 $con->close();

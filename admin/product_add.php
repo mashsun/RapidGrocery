@@ -10,14 +10,7 @@ if(isset($_POST['but_logout'])){
     session_destroy();
     header('Location: ../admin_login.php');
 }
-    $product_id = $_GET["product_id"];
-    $sql_query = "select p.product_id, p.product_name, ca.category_name, p.list_price, p.description,
-                        p.discount_percent, p.product_img
-                       from products p JOIN categories ca ON p.category_id = ca.category_id
-                       where p.product_id=$product_id
-                       group by p.product_id;";
 
-   $result = $con->query($sql_query);
 ?>
 
 <!DOCTYPE html>
@@ -42,59 +35,62 @@ if(isset($_POST['but_logout'])){
 
     <article>
         <h2>Add Product</h2>
+        <form action="product_add_new.php" method="post" name="product_add_new" id="product_add_new">
         <table id="customers">
             <tr>
-                <th width="250">Product ID</th>
-                <td>1</td>
+                <th>Product Name</th>
+                <td><input type="text" name="product_name"></td>
             </tr>
             <tr>
-                <th>Product Name</th>
-                <td><input type="text"></td>
+                <th>Product Code</th>
+                <td><input type="text" name="product_code"></td>
             </tr>
             <tr>
                 <th>Category</th>
                 <td>
-                    <select name="category">
+                    <select name="category_id">
                         <option value="">======== Select Category =========</option>
-                        <option value="Bakery">Bakery</option>
-                        <option value="Dairy">Dairy</option>
-                        <option value="Drink">Drink</option>
-                        <option value="Fresh">Fresh</option>
-                        <option value="Frozen">Frozen</option>
-                        <option value="Meat">Meat</option>
-                        <option value="Seafood">Seafood</option>
-                        <option value="Snacks">Snacks</option>
+                        <option value="1">Bakery</option>
+                        <option value="2">Dairy</option>
+                        <option value="3">Drink</option>
+                        <option value="4">Fresh</option>
+                        <option value="5">Frozen</option>
+                        <option value="6">Meat</option>
+                        <option value="7">Seafood</option>
+                        <option value="8">Snacks</option>
                     </select>
                 </td>
             </tr>
             <tr>
                 <th>Price</th>
-                <td><input type="text" size="3"></td>
+                <td><input type="text" size="3" name="list_price"></td>
             </tr>
             <tr>
                 <th>Discription</th>
                 <td>
-<textarea cols="80" rows="5">
+                    <textarea cols="80" rows="5" name="description">
 
-</textarea>
+                    </textarea>
                 </td>
             </tr>
             <tr>
                 <th>Discount percent</th>
-                <td><input type="text" size="3"></td>
+                <td><input type="text" size="3" name="discount_percent"></td>
             </tr>
             <tr>
                 <th>Image Name</th>
-                <td><input type="text"></td>
+                <td><input type="text" name="product_img"></td>
             </tr>
         </table>
 
-        <p align="center"><input type="submit" value="Add" name="add"> <input type="submit" value="Cancel" name="cancel"></p>
+        <p align="center"><input type="submit" value="Add" name="product_add_new"> <input type="submit" value="Cancel" name="cancel"></p>
+        </form>
 
     </article>
 </section>
 
 <?php
+$con->close();
 include "footer.php";
 ?>
 
