@@ -161,6 +161,9 @@ else {
 
                <div class="button-group-area mt-10" align="center">
                 <h3 class="mb-30">SUBTOTAL &nbsp; $ <?php echo $subtotal ?></h3>
+
+                <p><a href="shop.php?category_name=Bakery"><strong>Continue Shopping</strong></a></p>
+
                 Shipping, taxes, and discounts calculated at checkout. <br/>
 
                  <?php
@@ -174,12 +177,12 @@ else {
                         $order_id = $rows['order_id'];
                      }
 
-                 echo "<a href='javascript:del_Orders(" .$order_id. ")' class='genric-btn danger' style='text-decoration:none'>Delete all items</a>";
+                     echo "<a href='javascript:del_Orders(" .$order_id. ")' class='genric-btn danger' style='text-decoration:none'>Delete all items</a>";
+                     echo "<input type='submit' value='Update Cart' name='save' class='genric-btn primary'>";
+                     echo "<a class='genric-btn info' href='checkout.php?order_id=" .$order_id. "'>Checkout</a>";
                  }
                  ?>
 
-                <input type="submit" value="Update Cart" name="save" class="genric-btn primary">
-                <a class="genric-btn info" href="#">Checkout</a>
                 </div>
             </div>
 </form>
