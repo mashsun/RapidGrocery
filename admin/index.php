@@ -32,6 +32,7 @@ if(isset($_POST['but_logout'])){
             <li><a href="order.php">Orders</a></li>
             <li><a href="product.php?category_name=Bakery">Products</a></li>
             <li><a href="customer.php">Customers</a></li>
+            <li><a href="https://www.sandbox.paypal.com/ca/signin?email=Ychang0138-facilitator@gmail.com" target="_blank">Payment</a></li>
         </ul>
     </nav>
 
