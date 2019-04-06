@@ -43,8 +43,10 @@ else {
 <div class="whole-wrap">
     <div class="container">
         <div align="section-top-border">
+        <br/>
+            <h3 class="mb-30" align="center">TOTAL PAYMENT &nbsp; $ <?php echo $subtotal ?> + Tax ($ <?php echo $subtotal * 13/100 ?>)</h3>
 
-            <script src="https://www.paypal.com/sdk/js?client-id=Acjfa4CiuNrq3soim_s6DG9rfji6NIZJNQRKaGfxh7J6000IJMd6B8kywVHWYxvIYOIJfv0lY1IJSkTx&currency=CAD"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=Ae2OhxVmYJi2qwFesFBIJmzjA29NqutFjDPokqMK152cEdurd-kJd2WL9c7J9D8YpxCK7RCvTLKKeuc9&currency=CAD&commit=false"></script>
             <div id="paypal-button-container" align="center" style="padding:40px;"></div>
 
             <script>
@@ -53,7 +55,7 @@ else {
                   return actions.order.create({
                     purchase_units: [{
                       amount: {
-                        value: '<?php echo $subtotal ?>'
+                        value: '<?php echo $subtotal+($subtotal * 13/100) ?>'
                       }
                     }]
                   });
