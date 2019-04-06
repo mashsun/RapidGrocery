@@ -125,7 +125,7 @@ if(isset($_POST['but_logout'])){
         </table>
 
         <p align="center"><input type="submit" value="Save" name="save"> <input type="submit" value="Cancel" name="cancel"></p>
-        <form>
+        </form>
 
     </article>
 </section>
