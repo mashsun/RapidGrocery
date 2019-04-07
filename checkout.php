@@ -46,7 +46,7 @@ else {
         <br/>
             <h3 class="mb-30" align="center">TOTAL PAYMENT &nbsp; $ <?php echo $subtotal ?> + Tax ($ <?php echo $subtotal * 13/100 ?>)</h3>
 
-            <script src="https://www.paypal.com/sdk/js?client-id=Ae2OhxVmYJi2qwFesFBIJmzjA29NqutFjDPokqMK152cEdurd-kJd2WL9c7J9D8YpxCK7RCvTLKKeuc9&currency=CAD&commit=false"></script>
+            <script src="https://www.paypal.com/sdk/js?client-id=Ae2OhxVmYJi2qwFesFBIJmzjA29NqutFjDPokqMK152cEdurd-kJd2WL9c7J9D8YpxCK7RCvTLKKeuc9&currency=CAD"></script>
             <div id="paypal-button-container" align="center" style="padding:40px;"></div>
 
             <script>
@@ -64,11 +64,8 @@ else {
                   return actions.order.capture().then(function(details) {
                     alert('Transaction completed by ' + details.payer.name.given_name);
                     // Call your server to save the transaction
-                     <?php
-                        $sql_query = "INSERT INTO payment (order_id, amount, payment_date)
-                                      VALUES ('$order_id','$subtotal',now())" ;
-                        $result = $con->query($sql_query);
-                     ?>
+                    window.location = "checkout_up.php?order_id=<?php echo $order_id ?>&subtotal=<?php echo $subtotal+($subtotal * 13/100) ?>";
+
                     return fetch('/paypal-transaction-complete', {
                       method: 'post',
                       headers: {
